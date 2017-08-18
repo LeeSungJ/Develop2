@@ -153,6 +153,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708180201362_InitialCreate.cs" />
+    <Compile Include="Migrations\201708180201362_InitialCreate.Designer.cs">
+      <DependentUpon>201708180201362_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708180253508_Initial.cs" />
+    <Compile Include="Migrations\201708180253508_Initial.Designer.cs">
+      <DependentUpon>201708180253508_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708180322195_Rating.cs" />
+    <Compile Include="Migrations\201708180322195_Rating.Designer.cs">
+      <DependentUpon>201708180322195_Rating.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -218,6 +231,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201708180201362_InitialCreate.resx">
+      <DependentUpon>201708180201362_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708180253508_Initial.resx">
+      <DependentUpon>201708180253508_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708180322195_Rating.resx">
+      <DependentUpon>201708180322195_Rating.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
