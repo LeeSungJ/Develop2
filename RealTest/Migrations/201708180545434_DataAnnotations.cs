@@ -3,7 +3,7 @@ namespace RealTest.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class DataAnnotations : DbMigration
     {
         public override void Up()
         {
@@ -14,6 +14,9 @@ namespace RealTest.Migrations
         
         public override void Down()
         {
+            AlterColumn("dbo.Movies", "Rating", c => c.String());
+            AlterColumn("dbo.Movies", "Genre", c => c.String());
+            AlterColumn("dbo.Movies", "Title", c => c.String());
         }
     }
 }
