@@ -20,9 +20,9 @@ namespace RealTest.Controllers
         public ActionResult Index(string movieGenre, string searchString)
         {                     
             
-            var GenreLst = con.GetGenre();
+            var genreLst = con.GetGenre();
             
-                ViewBag.movieGenre = new SelectList(GenreLst, "action");
+                ViewBag.movieGenre = new SelectList(genreLst, "action");
                                    
             var movies = con.GetMovies(movieGenre, searchString);
 
@@ -63,7 +63,7 @@ namespace RealTest.Controllers
 
             if (ModelState.IsValid)
             {                               
-                bool result = con.AddMovie(movie);
+                var result = con.AddMovie(movie);
 
                 if(result == true)
                 {
@@ -104,7 +104,7 @@ namespace RealTest.Controllers
         {
             if (ModelState.IsValid)
             {
-                bool result = con.EditMovie(movie);
+                var result = con.EditMovie(movie);
 
                 if(result == true)
                 {
@@ -144,7 +144,7 @@ namespace RealTest.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            bool result = con.DeleteMovie(id);
+            var result = con.DeleteMovie(id);
 
             if (result == true)
             {
