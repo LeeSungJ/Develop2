@@ -40,8 +40,18 @@ namespace RealTest.Model
         public bool DeleteMovie(int id)
         {
             GSModel movie = db.Movies2.Find(id);
-            var Delete = db.Movies2.Remove(movie);
-            var DbChange = db.SaveChanges();
+
+            if(movie == null)
+            {
+                return false;
+            }
+            else
+            {
+                var delete = db.Movies2.Remove(movie);
+
+                var dbChange = db.SaveChanges();
+            }
+            
             return true;
 
         }
@@ -49,31 +59,31 @@ namespace RealTest.Model
         //Post
         public bool EditMovie(GSModel movie)
         {
-            var Modify = db.Entry(movie).State = EntityState.Modified;
-            var DbChange = db.SaveChanges();
+            var modify = db.Entry(movie).State = EntityState.Modified;
+            var dbChange = db.SaveChanges();
             return true;
         }
 
 
         public bool AddMovie(GSModel movie)
         {                             
-               var Add = db.Movies2.Add(movie);
-               var DbChange = db.SaveChanges();
+               var add = db.Movies2.Add(movie);
+               var dbChange = db.SaveChanges();
                return true;
         }
 
         
         public IList<string> GetGenre()
         {
-            var GenreLst = new List<string>();
+            var genreLst = new List<string>();
 
-            var GenreQry = from m in db.Movies2
+            var genreQry = from m in db.Movies2
                            orderby m.Genre
                            select m.Genre;
 
-            GenreLst.AddRange(GenreQry.Distinct());
+            genreLst.AddRange(genreQry.Distinct());
 
-            return GenreLst;
+            return genreLst;
         }
 
         public bool FindId(int? id)
