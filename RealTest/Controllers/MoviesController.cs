@@ -19,10 +19,11 @@ namespace RealTest.Controllers
         // GET: Movies
         public ActionResult Index(string movieGenre, string searchString)
         {                     
-            var GenreLst = con.GetGenre();
-                        
-            ViewBag.movieGenre = new SelectList(GenreLst, "action");
             
+            var GenreLst = con.GetGenre();
+            
+                ViewBag.movieGenre = new SelectList(GenreLst, "action");
+                                   
             var movies = con.GetMovies(movieGenre, searchString);
 
             return View(movies);
@@ -57,13 +58,22 @@ namespace RealTest.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID, Title, ReleaseDate, Genre, Price, Rating")] GSModel movie)
+        public ActionResult Create([Bind(Include = "ID, Title, ReleaseDate, Genre, Price, Rating, Review")] GSModel movie)
         {
 
             if (ModelState.IsValid)
             {                               
-                con.AddMovie(movie);
-                return RedirectToAction("Index");
+                bool result = con.AddMovie(movie);
+
+                if(result == true)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    HttpNotFound();
+                }
+                
                 
             }
 
@@ -94,8 +104,18 @@ namespace RealTest.Controllers
         {
             if (ModelState.IsValid)
             {
-                con.EditMoviePost(movie);
-                return RedirectToAction("Index");
+                bool result = con.EditMovie(movie);
+
+                if(result == true)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+                
+                
             }
             return View(movie);
         }
@@ -124,8 +144,17 @@ namespace RealTest.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            con.DeleteMoviePost(id);
-            return RedirectToAction("Index");
+            bool result = con.DeleteMovie(id);
+
+            if (result == true)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+            
         }
 
         protected override void Dispose(bool disposing)

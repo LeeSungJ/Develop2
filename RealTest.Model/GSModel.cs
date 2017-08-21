@@ -29,6 +29,7 @@ namespace RealTest.Model
         [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
         [StringLength(5)]
         public string Rating { get; set; }
+        [StringLength(5)]
         public string Review { get; set; }
 
     }
