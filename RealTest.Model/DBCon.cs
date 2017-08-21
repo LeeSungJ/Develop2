@@ -37,29 +37,29 @@ namespace RealTest.Model
         }        
 
         //Post
-        public bool DeleteMoviePost(int id)
+        public bool DeleteMovie(int id)
         {
             GSModel movie = db.Movies2.Find(id);
-            db.Movies2.Remove(movie);
-            db.SaveChanges();
+            var Delete = db.Movies2.Remove(movie);
+            var DbChange = db.SaveChanges();
             return true;
 
         }
 
         //Post
-        public bool EditMoviePost(GSModel movie)
+        public bool EditMovie(GSModel movie)
         {
-            db.Entry(movie).State = EntityState.Modified;
-            db.SaveChanges();
+            var Modify = db.Entry(movie).State = EntityState.Modified;
+            var DbChange = db.SaveChanges();
             return true;
         }
 
 
         public bool AddMovie(GSModel movie)
         {                             
-                db.Movies2.Add(movie);
-                db.SaveChanges();
-                return true;
+               var Add = db.Movies2.Add(movie);
+               var DbChange = db.SaveChanges();
+               return true;
         }
 
         
