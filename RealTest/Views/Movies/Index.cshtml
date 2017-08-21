@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RealTest.Model.Class1>
+﻿@model IEnumerable<RealTest.Model.GSModel>
 
 @{
     ViewBag.Title = "Index";
@@ -40,6 +40,9 @@
         <th>
         @Html.DisplayNameFor(model => model.Rating)
     </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Review)
+        </th>
         <th></th>
     </tr>
 
@@ -61,6 +64,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Review)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
