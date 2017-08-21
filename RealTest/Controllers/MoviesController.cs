@@ -87,7 +87,9 @@ namespace RealTest.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             GSModel movie = db.Movies2.Find(id);
+
             if (movie == null)
             {
                 return HttpNotFound();
