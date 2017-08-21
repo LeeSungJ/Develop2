@@ -171,6 +171,14 @@
     <Compile Include="Migrations\201708180545434_DataAnnotations.Designer.cs">
       <DependentUpon>201708180545434_DataAnnotations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708210347315_Second.cs" />
+    <Compile Include="Migrations\201708210347315_Second.Designer.cs">
+      <DependentUpon>201708210347315_Second.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708210533114_Three.cs" />
+    <Compile Include="Migrations\201708210533114_Three.Designer.cs">
+      <DependentUpon>201708210533114_Three.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -256,6 +264,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708180545434_DataAnnotations.resx">
       <DependentUpon>201708180545434_DataAnnotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708210347315_Second.resx">
+      <DependentUpon>201708210347315_Second.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708210533114_Three.resx">
+      <DependentUpon>201708210533114_Three.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

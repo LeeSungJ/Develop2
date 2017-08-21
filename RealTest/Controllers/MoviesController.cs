@@ -13,21 +13,17 @@ namespace RealTest.Controllers
 {
     public class MoviesController : Controller
     {
-        private MovieDBContext db = new MovieDBContext();
-        DBCon C = new DBCon();
+        private MovieDBContext2 db = new MovieDBContext2();
+        DBCon con = new DBCon();
 
         // GET: Movies
         public ActionResult Index(string movieGenre, string searchString)
-        {
-          
-            
-            var GenreLst = C.GetGenre();
-
-            
+        {                     
+            var GenreLst = con.GetGenre();
+                        
             ViewBag.movieGenre = new SelectList(GenreLst, "action");
-
-
-            var movies = C.GetMovies(movieGenre,searchString);
+            
+            var movies = con.GetMovies(movieGenre, searchString);
 
             return View(movies);
         }
@@ -41,7 +37,7 @@ namespace RealTest.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Class1 movie = db.Movies.Find(id);
+            GSModel movie = db.Movies2.Find(id);
 
             if (movie == null)
             {
@@ -61,12 +57,12 @@ namespace RealTest.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Title,ReleaseDate,Genre,Price,Rating")] Class1 movie)
+        public ActionResult Create([Bind(Include = "ID, Title, ReleaseDate, Genre, Price, Rating")] GSModel movie)
         {
 
             if (ModelState.IsValid)
             {                               
-                C.AddMovie(movie);
+                con.AddMovie(movie);
                 return RedirectToAction("Index");
                 
             }
@@ -81,7 +77,7 @@ namespace RealTest.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Class1 movie = db.Movies.Find(id);
+            GSModel movie = db.Movies2.Find(id);
             if (movie == null)
             {
                 return HttpNotFound();
@@ -94,11 +90,11 @@ namespace RealTest.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Title,ReleaseDate,Genre,Price,Rating")] Class1 movie)
+        public ActionResult Edit([Bind(Include = "ID, Title, ReleaseDate, Genre, Price, Rating, Review")] GSModel movie)
         {
             if (ModelState.IsValid)
             {
-                C.EditMoviePost(movie);
+                con.EditMoviePost(movie);
                 return RedirectToAction("Index");
             }
             return View(movie);
@@ -113,7 +109,7 @@ namespace RealTest.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Class1 movie = db.Movies.Find(id);
+            GSModel movie = db.Movies2.Find(id);
 
             if (movie == null)
             {
@@ -128,8 +124,7 @@ namespace RealTest.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-
-            C.DeleteMoviePost(id);
+            con.DeleteMoviePost(id);
             return RedirectToAction("Index");
         }
 

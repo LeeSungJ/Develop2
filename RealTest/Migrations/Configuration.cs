@@ -1,12 +1,12 @@
 namespace RealTest.Migrations
 {
-    using RealTest.Models;
+    using RealTest.Model;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<RealTest.Models.MovieDBContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<RealTest.Model.MovieDBContext2>
     {
         public Configuration()
         {
@@ -14,7 +14,7 @@ namespace RealTest.Migrations
             ContextKey = "RealTest.Models.MovieDBContext";
         }
 
-        protected override void Seed(RealTest.Models.MovieDBContext context)
+        protected override void Seed(RealTest.Model.MovieDBContext2 context)
         {
             //  This method will be called after migrating to the latest version.
 
@@ -28,39 +28,25 @@ namespace RealTest.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-            context.Movies.AddOrUpdate(i => i.Title,
-        new Movie
+            context.Movies2.AddOrUpdate(i => i.Title,
+        new GSModel
         {
-            Title = "When Harry Met Sally",
-            ReleaseDate = DateTime.Parse("1989-1-11"),
+            Title = "About Time",
+            ReleaseDate = DateTime.Parse("1999-1-11"),
             Genre = "Romantic Comedy",
             Rating = "PG",
-            Price = 7.99M
+            Price = 9.99M,
+            Review = "GOOD"
         },
 
-         new Movie
+         new GSModel
          {
              Title = "Ghostbusters ",
              ReleaseDate = DateTime.Parse("1984-3-13"),
              Genre = "Comedy",
-             Price = 8.99M
-         },
-
-         new Movie
-         {
-             Title = "Ghostbusters 2",
-             ReleaseDate = DateTime.Parse("1986-2-23"),
-             Genre = "Comedy",
-             Price = 9.99M
-         },
-
-       new Movie
-       {
-           Title = "Rio Bravo",
-           ReleaseDate = DateTime.Parse("1959-4-15"),
-           Genre = "Western",
-           Price = 3.99M
-       }
+             Price = 8.99M,
+             Review = "GOOD"
+         }
    );
 
         }
