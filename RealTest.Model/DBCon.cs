@@ -17,10 +17,10 @@ namespace RealTest.Model
         private MovieDBContext2 db = new MovieDBContext2();
 
 
-        public IList<GSModel> GetMovies(string movieGenre, string searchString)
+        public IList<Movie> GetMovies(string movieGenre, string searchString)
         {
 
-            var movies = from m in db.Movies2
+            var movies = from m in db.Movies
                          select m;
 
             if (!String.IsNullOrEmpty(searchString))
@@ -33,13 +33,13 @@ namespace RealTest.Model
                 movies = movies.Where(x => x.Genre == movieGenre);
             }
             
-            return movies.ToList() ;
+            return movies.ToList();
         }        
 
         //Post
         public bool DeleteMovie(int id)
         {
-            GSModel movie = db.Movies2.Find(id);
+            Movie movie = db.Movies.Find(id);
 
             if(movie == null)
             {
@@ -47,7 +47,7 @@ namespace RealTest.Model
             }
             else
             {
-                var delete = db.Movies2.Remove(movie);
+                var delete = db.Movies.Remove(movie);
 
                 var dbChange = db.SaveChanges();
             }
@@ -57,7 +57,7 @@ namespace RealTest.Model
         }
 
         //Post
-        public bool EditMovie(GSModel movie)
+        public bool EditMovie(Movie movie)
         {
             var modify = db.Entry(movie).State = EntityState.Modified;
             var dbChange = db.SaveChanges();
@@ -65,9 +65,9 @@ namespace RealTest.Model
         }
 
 
-        public bool AddMovie(GSModel movie)
+        public bool AddMovie(Movie movie)
         {                             
-               var add = db.Movies2.Add(movie);
+               var add = db.Movies.Add(movie);
                var dbChange = db.SaveChanges();
                return true;
         }
@@ -77,7 +77,7 @@ namespace RealTest.Model
         {
             var genreLst = new List<string>();
 
-            var genreQry = from m in db.Movies2
+            var genreQry = from m in db.Movies
                            orderby m.Genre
                            select m.Genre;
 
@@ -88,7 +88,7 @@ namespace RealTest.Model
 
         public bool FindId(int? id)
         {
-            GSModel movie = db.Movies2.Find(id);
+            Movie movie = db.Movies.Find(id);
             return true;
         }
         

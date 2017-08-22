@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace RealTest.Model
 {
-    public class GSModel
+    public class Movie
     {
         public int ID { get; set; }
 
@@ -41,7 +41,7 @@ namespace RealTest.Model
         {
         }
 
-        public DbSet<GSModel> Movies2 { get; set; } //DB 테이블 생성 테이블명 'Movies'
+        public DbSet<Movie> Movies { get; set; } //DB 테이블 생성 테이블명 'Movies'
     }
     
 

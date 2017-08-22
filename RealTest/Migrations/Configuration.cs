@@ -28,9 +28,10 @@ namespace RealTest.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-            context.Movies2.AddOrUpdate(i => i.Title,
-        new GSModel
+            context.Movies.AddOrUpdate(i => i.Title,
+        new Movie
         {
+         
             Title = "About Time",
             ReleaseDate = DateTime.Parse("1999-1-11"),
             Genre = "Romantic Comedy",
@@ -39,8 +40,9 @@ namespace RealTest.Migrations
             Review = "GOOD"
         },
 
-         new GSModel
+         new Movie
          {
+         
              Title = "Ghostbusters ",
              ReleaseDate = DateTime.Parse("1984-3-13"),
              Genre = "Comedy",
