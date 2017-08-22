@@ -179,6 +179,10 @@
     <Compile Include="Migrations\201708210533114_Three.Designer.cs">
       <DependentUpon>201708210533114_Three.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708220709129_Initial1.cs" />
+    <Compile Include="Migrations\201708220709129_Initial1.Designer.cs">
+      <DependentUpon>201708220709129_Initial1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -270,6 +274,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708210533114_Three.resx">
       <DependentUpon>201708210533114_Three.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708220709129_Initial1.resx">
+      <DependentUpon>201708220709129_Initial1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

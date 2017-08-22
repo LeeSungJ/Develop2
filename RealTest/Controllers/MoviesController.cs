@@ -38,7 +38,7 @@ namespace RealTest.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            GSModel movie = db.Movies2.Find(id);
+            Movie movie = db.Movies.Find(id);
 
             if (movie == null)
             {
@@ -58,7 +58,7 @@ namespace RealTest.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID, Title, ReleaseDate, Genre, Price, Rating, Review")] GSModel movie)
+        public ActionResult Create([Bind(Include = "ID, Title, ReleaseDate, Genre, Price, Rating, Review")] Movie movie)
         {
 
             if (ModelState.IsValid)
@@ -73,8 +73,7 @@ namespace RealTest.Controllers
                 {
                     HttpNotFound();
                 }
-                
-                
+                                
             }
 
             return View(movie);
@@ -88,7 +87,7 @@ namespace RealTest.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            GSModel movie = db.Movies2.Find(id);
+            Movie movie = db.Movies.Find(id);
 
             if (movie == null)
             {
@@ -102,7 +101,7 @@ namespace RealTest.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID, Title, ReleaseDate, Genre, Price, Rating, Review")] GSModel movie)
+        public ActionResult Edit([Bind(Include = "ID, Title, ReleaseDate, Genre, Price, Rating, Review")] Movie movie)
         {
             if (ModelState.IsValid)
             {
@@ -122,7 +121,6 @@ namespace RealTest.Controllers
             return View(movie);
         }
         
-
         // GET: Movies/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -131,7 +129,7 @@ namespace RealTest.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            GSModel movie = db.Movies2.Find(id);
+            Movie movie = db.Movies.Find(id);
 
             if (movie == null)
             {
