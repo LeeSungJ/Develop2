@@ -38,13 +38,24 @@ namespace RealTest.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Movie movie = db.Movies.Find(id);
+            // Movie movie = db.Movies.Find(id);
 
-            if (movie == null)
+            var movies = con.FindId(id);
+
+            //if (movie == null)
+            //{
+            //    return HttpNotFound();
+            //}
+
+            if(movies == true)
+            {
+                return View(con.FindId(id));
+            }
+            else
             {
                 return HttpNotFound();
             }
-            return View(movie);
+            
         }
 
         // GET: Movies/Create
