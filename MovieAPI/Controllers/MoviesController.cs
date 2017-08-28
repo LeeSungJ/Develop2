@@ -70,7 +70,7 @@ namespace MovieAPI.Controllers
             }
         }
 
-        [HttpPut]
+        [HttpPost]
         public ActionResult Put([Bind(Include = "ID, Title, ReleaseDate, Genre, Price, Rating, Review")] Movie movie)
         {
             if (ModelState.IsValid)
