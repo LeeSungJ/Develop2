@@ -50,6 +50,8 @@ namespace RealTest.Model
                 var delete = db.Movies.Remove(movie);
 
                 var dbChange = db.SaveChanges();
+
+                
             }
             
             return true;
@@ -92,7 +94,7 @@ namespace RealTest.Model
             return true;
         }
         
-
+        
     }
 
 

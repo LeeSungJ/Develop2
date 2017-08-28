@@ -77,9 +77,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MovieAPI\MovieAPI.csproj">
-      <Project>{3181ed5e-4ac8-4960-8ea6-9d50f6dad1e4}</Project>
-      <Name>MovieAPI</Name>
+    <ProjectReference Include="..\RealTest.Model\RealTest.Model.csproj">
+      <Project>{140c6118-ab11-4459-9695-7a4ff5a0f0ab}</Project>
+      <Name>RealTest.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
