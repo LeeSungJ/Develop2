@@ -17,14 +17,14 @@ namespace WebAPI.Controllers
     public class Movies1Controller : ApiController
     {
         private WebAPIContext db = new WebAPIContext();
-        DBCon con = new DBCon();
+        MovieDao con = new MovieDao();
 
         // GET: api/Movies1
         public IList<Movie> GetMovies()
         {
             string movieGenre = null;
             string searchString = null;
-            var movies = con.GetMovies(movieGenre, searchString);
+            var movies = con.Find(movieGenre, searchString);
             //return db.Movies;
             return movies;
         }

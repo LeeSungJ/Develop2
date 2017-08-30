@@ -43,10 +43,10 @@ namespace RealTest.Model
 
     }
 
-    public class MovieDBContext2 : DbContext
+    public class MovieDBContext : DbContext
     {
 
-        public MovieDBContext2() : base("DefaultConnection") //Web.config 에서 DB연결
+        public MovieDBContext() : base("DefaultConnection") //Web.config 에서 DB연결
         {
         }
 

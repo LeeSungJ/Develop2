@@ -1,6 +1,5 @@
-namespace RealTest.Migrations
+namespace RealTest.Model.Migrations
 {
-    using RealTest.Model;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -11,7 +10,6 @@ namespace RealTest.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "RealTest.Models.MovieDBContext";
         }
 
         protected override void Seed(RealTest.Model.MovieDBContext context)
@@ -28,29 +26,6 @@ namespace RealTest.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-            context.Movies.AddOrUpdate(i => i.Title,
-        new Movie
-        {
-         
-            Title = "About Time",
-            ReleaseDate = DateTime.Parse("1999-1-11"),
-            Genre = "Romantic Comedy",
-            Rating = "PG",
-            Price = 9.99M,
-            Review = "GOOD"
-        },
-
-         new Movie
-         {
-         
-             Title = "Ghostbusters ",
-             ReleaseDate = DateTime.Parse("1984-3-13"),
-             Genre = "Comedy",
-             Price = 8.99M,
-             Review = "GOOD"
-         }
-   );
-
         }
     }
 }
