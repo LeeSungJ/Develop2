@@ -15,14 +15,15 @@ using System.Linq.Expressions;
 using WebAPI.DTOs;
 
 
+
 namespace WebAPI.Controllers
 {
     [RoutePrefix("api/movies")]
     public class MoviesController : ApiController
     {
        
-        private MovieDBContext2 db = new MovieDBContext2();
-        DBCon con = new DBCon();
+        private MovieDBContext db = new MovieDBContext();
+        MovieDao con = new MovieDao();
 
        
        
@@ -34,7 +35,7 @@ namespace WebAPI.Controllers
             string movieGenre = null;
             string searchString = null;
 
-            var movies = con.GetMovies(movieGenre, searchString);
+            var movies = con.Find(movieGenre, searchString);
 
             return movies;
         }

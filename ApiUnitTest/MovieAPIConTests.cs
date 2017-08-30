@@ -12,13 +12,11 @@ namespace MovieAPI.Model.Tests
     [TestClass()]
     public class MovieAPIConTests
     {
-
-        MovieAPICon con = new MovieAPICon();
-
-        Movie postData =
+        Movie movie =
             new Movie
             {
-                Title = "BAAAM",
+                ID = 39,
+                Title = "BaseBall",
                 ReleaseDate = DateTime.Parse("2017-08-28 18:09"),
                 Genre = "Auction",
                 Rating = "PG",
@@ -26,28 +24,21 @@ namespace MovieAPI.Model.Tests
                 Review = "GOOOD"
             };
 
-        [TestMethod()]
+        //[TestMethod()]
         public void GetTest()
         {
-            //Get 역직렬화 에러라고 뜬다. 왜?
-            var getResult = con.Get(); 
-
-            if(getResult == true)
-            {
-                Console.WriteLine("Success");
-            }
-            else
-            {
-                Console.WriteLine("Fail");
-            }
+            //Get 성공했다 하지만 이게 맞는지 확인을 받자.
+            var con = new MovieAPICon();
+            var getResult = con.Get();
             
         }
 
-        [TestMethod()]
+        //[TestMethod()]
         public void deleteTest()
         {
             //Delete 성공
-            var delResult = con.Delete(29);
+            var con = new MovieAPICon();
+            var delResult = con.Delete(31);
 
             if(delResult == true)
             {
@@ -59,37 +50,24 @@ namespace MovieAPI.Model.Tests
             }
         }
 
-        [TestMethod()]
+        //[TestMethod()]
         public void postTest()
         {
             //Post 성공
-            var postResult = con.Post(postData);
+            var con = new MovieAPICon();
+            var postResult = con.Post(movie);
 
-            if(postResult == true)
-            {
-                Console.WriteLine("Success");
-            }
-            else
-            {
-                Console.WriteLine("Fail");
-            }
+            Console.WriteLine(postResult);
         }
 
         [TestMethod()]
         public void putTest()
         {
+            var con = new MovieAPICon();
             //Put 오류가 나지는 않지만 수정이 되질 않는다. 왜??
-
-            var putResult = con.Put(31, postData);
-
-            if (putResult == true)
-            {
-                Console.WriteLine("Success");
-            }
-            else
-            {
-                Console.WriteLine("Fail");
-            }
+            var putResult = con.Edit(movie);
+            
+                Console.WriteLine("suc");
         }
 
 

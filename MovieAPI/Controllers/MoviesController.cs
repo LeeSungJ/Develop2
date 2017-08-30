@@ -9,8 +9,13 @@ namespace MovieAPI.Controllers
 {
     public class MoviesController : Controller
     {
-        private MovieDBContext2 dbCon = new MovieDBContext2();
-        DBCon con = new DBCon();
+        private MovieDao dao;
+
+        public MoviesController()
+        {
+            dao = new MovieDao();
+        }
+
         // GET: Movie
         public ActionResult Index()
         {
@@ -18,29 +23,22 @@ namespace MovieAPI.Controllers
         }
 
         [Route("")]
-
         [HttpGet]
         public ActionResult Get()
         {
-            string movieGenre = null;
-            string searchString = null;
+            var movies = dao.GetMovies();
 
-            var movies = con.GetMovies(movieGenre, searchString);
-
-            return Json(new { movies }, JsonRequestBehavior.AllowGet );
+            return Json(new { movies }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpDelete]
         public ActionResult Delete(int id)
         {
-            var movies = con.DeleteMovie(id);
+            var movies = dao.DeleteMovie(id);
 
             if(movies == true)
             {
-                string movieGenre = null;
-                string searchString = null;
-
-                var result = con.GetMovies(movieGenre, searchString);
+                var result = dao.GetMovies();
 
                 return Json(new { result });
             }
@@ -51,16 +49,13 @@ namespace MovieAPI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post([Bind(Include = "ID, Title, ReleaseDate, Genre, Price, Rating, Review")] Movie movie)
+        public ActionResult Post(Movie movie)
         {
-            var movies = con.AddMovie(movie);
+            var movies = dao.AddMovie(movie);
 
             if (movies == true)
             {
-                string movieGenre = null;
-                string searchString = null;
-
-                var result = con.GetMovies(movieGenre, searchString);
+                var result = dao.GetMovies();
 
                 return Json(new { result });
             }
@@ -71,18 +66,15 @@ namespace MovieAPI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Put([Bind(Include = "ID, Title, ReleaseDate, Genre, Price, Rating, Review")] Movie movie)
+        public ActionResult Edit(Movie movie)
         {
             if (ModelState.IsValid)
             {
-                var result = con.EditMovie(movie);
+                var result = dao.EditMovie(movie);
 
                 if (result == true)
                 {
-                    string movieGenre = null;
-                    string searchString = null;
-
-                    var movies = con.GetMovies(movieGenre, searchString);
+                    var movies = dao.GetMovies();
 
                     return Json(new { movies });
                 }
@@ -90,8 +82,6 @@ namespace MovieAPI.Controllers
                 {
                     return HttpNotFound();
                 }
-
-
             }
             return View(movie);
         }

@@ -13,8 +13,8 @@ namespace RealTest.Controllers
 {
     public class MoviesController : Controller
     {
-        private MovieDBContext2 db = new MovieDBContext2();
-        DBCon con = new DBCon();
+        private MovieDBContext db = new MovieDBContext();
+        MovieDao con = new MovieDao();
 
         // GET: Movies
         public ActionResult Index(string movieGenre, string searchString)
@@ -24,7 +24,7 @@ namespace RealTest.Controllers
             
                 ViewBag.movieGenre = new SelectList(genreLst, "action");
                                    
-            var movies = con.GetMovies(movieGenre, searchString);
+            var movies = con.Find(movieGenre, searchString);
 
             return View(movies);
         }
@@ -98,7 +98,7 @@ namespace RealTest.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Movie movie = db.Movies.Find(id);
+            var movie = db.Movies.Find(id);
 
             if (movie == null)
             {

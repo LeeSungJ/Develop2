@@ -8,8 +8,8 @@ namespace WebAPI.Models
 {
     public class MovieRepository : IMovieRepository
     {
-        MovieDBContext2 dbCon = new MovieDBContext2();
-        DBCon con = new DBCon();
+        MovieDBContext dbCon = new MovieDBContext();
+        MovieDao con = new MovieDao();
 
         private List<Movie> movies = new List<Movie>();
         private int _nextId = 1;
@@ -23,7 +23,7 @@ namespace WebAPI.Models
         {
             string movieGenre = null;
             string searchString = null;
-            var movies = con.GetMovies(movieGenre, searchString);
+            var movies = con.Find(movieGenre, searchString);
 
             return movies;
         }
