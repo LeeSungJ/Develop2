@@ -20,7 +20,6 @@ namespace RealTest.Model.Migrations
                         Review = c.String(maxLength: 5),
                     })
                 .PrimaryKey(t => t.ID);
-            
         }
         
         public override void Down()

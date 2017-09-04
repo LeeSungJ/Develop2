@@ -12,7 +12,6 @@ namespace RealTest.Models
     {
         public int ID { get; set; }
 
-
         [StringLength(60, MinimumLength = 3)]
         public string Title { get; set; }
 
@@ -21,7 +20,6 @@ namespace RealTest.Models
         //[DisplayFormat(DataFormatString = "{0:yyyy-mm-dd}", ApplyFormatInEditMode = true)]   
         [Display(Name = "Release Date"), DataType(DataType.Date)]
         public DateTime ReleaseDate { get; set; }
-
 
         [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
         [Required]
@@ -34,7 +32,6 @@ namespace RealTest.Models
         [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
         [StringLength(5)]
         public string Rating { get; set; }
-        
     }
 
     public class MovieDBContext : DbContext

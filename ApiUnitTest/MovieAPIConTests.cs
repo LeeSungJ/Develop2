@@ -24,21 +24,39 @@ namespace MovieAPI.Model.Tests
                 Review = "GOOOD"
             };
 
-        //[TestMethod()]
+        [TestMethod()]
         public void GetTest()
         {
-            //Get 성공했다 하지만 이게 맞는지 확인을 받자.
-            var con = new MovieAPICon();
-            var getResult = con.Get();
-            
+            var apiService = new MovieAPIService();  
+            var getResult = apiService.GetMovies("Action","e");
+
+            Console.Write(getResult);
         }
 
-        //[TestMethod()]
-        public void deleteTest()
+        [TestMethod()]
+        public void GetGenres()
         {
-            //Delete 성공
-            var con = new MovieAPICon();
-            var delResult = con.Delete(31);
+            var apiService = new MovieAPIService();
+            var genre = apiService.GetGenres();
+
+            Console.Write(genre);
+        }
+
+        [TestMethod()]
+        public void GetMovieId()
+        {
+            int id = 20;
+            var apiService = new MovieAPIService();
+            var genre = apiService.GetMovie(id);
+
+            Console.Write(genre);
+        }
+
+        [TestMethod()]
+        public void DeleteTest()
+        {
+            var apiService = new MovieAPIService();
+            var delResult = apiService.DeleteMovie(null);
 
             if(delResult == true)
             {
@@ -50,26 +68,22 @@ namespace MovieAPI.Model.Tests
             }
         }
 
-        //[TestMethod()]
-        public void postTest()
+        [TestMethod()]
+        public void PostTest()
         {
-            //Post 성공
-            var con = new MovieAPICon();
-            var postResult = con.Post(movie);
+            var apiService = new MovieAPIService();
+            var postResult = apiService.PostMovie(movie);
 
             Console.WriteLine(postResult);
         }
 
         [TestMethod()]
-        public void putTest()
+        public void PutTest()
         {
-            var con = new MovieAPICon();
-            //Put 오류가 나지는 않지만 수정이 되질 않는다. 왜??
-            var putResult = con.Edit(movie);
-            
-                Console.WriteLine("suc");
+            var apiService = new MovieAPIService();
+            var putResult = apiService.EditMovie(movie);
+
+            Console.WriteLine("suc");
         }
-
-
     }
 }
