@@ -108,9 +108,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201708290144000_Test.cs" />
-    <Compile Include="Migrations\201708290144000_Test.Designer.cs">
-      <DependentUpon>201708290144000_Test.cs</DependentUpon>
+    <Compile Include="Migrations\CreateMoviesTable.cs" />
+    <Compile Include="Migrations\CreateMoviesTable.Designer.cs">
+      <DependentUpon>CreateMoviesTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Movie.cs" />
@@ -139,8 +139,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201708290144000_Test.resx">
-      <DependentUpon>201708290144000_Test.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\CreateMoviesTable.resx">
+      <DependentUpon>CreateMoviesTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

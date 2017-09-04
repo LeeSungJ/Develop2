@@ -1,28 +1,21 @@
-﻿@model IEnumerable<RealTest.Model.Movie>
+﻿@model IEnumerable<MovieAPI.Model.Movie>
 
 @{
     ViewBag.Title = "Index";
-    
 }
 
 <h2>Index</h2>
 
-
-
-
+@Html.ActionLink("Create New", "Create")
+@using (Html.BeginForm("Index","Movies",FormMethod.Get))
+{
 <p>
-    @Html.ActionLink("Create New", "Create")
-    ViewBag.movieGenre = new SelectList(GenreLst, "Comedy");
-    @using (Html.BeginForm("Index","Movies",FormMethod.Get))
-    {
-    <p>
-        
-        Genre: @Html.DropDownList("movieGenre", "All")
-        Title: @Html.TextBox("SearchString") <br />
-        <input type="submit" value="Filter" />
-    </p> 
-    }
-</p>
+    Genre: @Html.DropDownList("movieGenre", "All")
+    Title: @Html.TextBox("SearchString") <br />
+    <input type="submit" value="Filter" />
+</p> 
+}
+
 <table class="table">
     <tr>
         <th>
@@ -43,38 +36,36 @@
         <th>
             @Html.DisplayNameFor(model => model.Review)
         </th>
-        <th></th>
+        <th>
+        </th>
+    </tr>    
+
+@foreach (var movie in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => movie.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => movie.ReleaseDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => movie.Genre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => movie.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => movie.Rating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => movie.Review)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = movie.ID }) |
+            @Html.ActionLink("Details", "Details", new { id = movie.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = movie.ID })
+        </td>
     </tr>
-
-    
-    
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReleaseDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Genre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Review)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-            </td>
-        </tr>
-    
 }
-
 </table>

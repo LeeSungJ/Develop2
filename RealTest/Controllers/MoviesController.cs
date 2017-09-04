@@ -1,34 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
+﻿using System.Net;
 using System.Web.Mvc;
-using RealTest.Model;
+using MovieAPI.Model;
 
 
 namespace RealTest.Controllers
 {
     public class MoviesController : Controller
     {
-        private MovieDBContext db = new MovieDBContext();
-        MovieDao con = new MovieDao();
-
-        // GET: Movies
+        MovieAPIService apiService = new MovieAPIService();
+        
+        // GET: Movies 
         public ActionResult Index(string movieGenre, string searchString)
-        {                     
+        {
+            var genreList = apiService.GetGenres();
+            ViewBag.movieGenre = new SelectList(genreList);
             
-            var genreLst = con.GetGenre();
-            
-                ViewBag.movieGenre = new SelectList(genreLst, "action");
-                                   
-            var movies = con.Find(movieGenre, searchString);
-
+            var movies = apiService.GetMovies(movieGenre, searchString);
             return View(movies);
         }
-       
 
         // GET: Movies/Details/5
         public ActionResult Details(int? id)
@@ -37,25 +26,9 @@ namespace RealTest.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            var movies = apiService.GetMovie(id);
 
-            // Movie movie = db.Movies.Find(id);
-
-            var movies = con.FindId(id);
-
-            //if (movie == null)
-            //{
-            //    return HttpNotFound();
-            //}
-
-            if(movies == true)
-            {
-                return View(con.FindId(id));
-            }
-            else
-            {
-                return HttpNotFound();
-            }
-            
+            return View(movies);
         }
 
         // GET: Movies/Create
@@ -69,22 +42,16 @@ namespace RealTest.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID, Title, ReleaseDate, Genre, Price, Rating, Review")] Movie movie)
+        public ActionResult Create(Movie movie)
         {
-
-            if (ModelState.IsValid)
-            {                               
-                var result = con.AddMovie(movie);
-
-                if(result == true)
-                {
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    HttpNotFound();
-                }
-                                
+            var result = apiService.PostMovie(movie);
+            if(result == true)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                HttpNotFound();
             }
 
             return View(movie);
@@ -98,9 +65,9 @@ namespace RealTest.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var movie = db.Movies.Find(id);
+            var movie = apiService.GetMovie(id);
 
-            if (movie == null)
+            if (movie.Equals(null))
             {
                 return HttpNotFound();
             }
@@ -112,24 +79,18 @@ namespace RealTest.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID, Title, ReleaseDate, Genre, Price, Rating, Review")] Movie movie)
+        public ActionResult Edit(Movie movie)
         {
-            if (ModelState.IsValid)
-            {
-                var result = con.EditMovie(movie);
+            var result = apiService.EditMovie(movie);
 
-                if(result == true)
-                {
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    return HttpNotFound();
-                }
-                
-                
+            if(result == true)
+            {
+                return RedirectToAction("Index");
             }
-            return View(movie);
+            else
+            {
+                return HttpNotFound();
+            }
         }
         
         // GET: Movies/Delete/5
@@ -140,22 +101,21 @@ namespace RealTest.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Movie movie = db.Movies.Find(id);
+            var movie = apiService.GetMovie(id);
 
-            if (movie == null)
+            if (movie.Equals(null))
             {
                 return HttpNotFound();
             }
             return View(movie);
         }
-        
 
         // POST: Movies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var result = con.DeleteMovie(id);
+            var result = apiService.DeleteMovie(id);
 
             if (result == true)
             {
@@ -165,17 +125,6 @@ namespace RealTest.Controllers
             {
                 return HttpNotFound();
             }
-            
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-        
     }
 }

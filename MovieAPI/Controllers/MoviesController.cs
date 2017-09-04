@@ -9,26 +9,34 @@ namespace MovieAPI.Controllers
 {
     public class MoviesController : Controller
     {
-        private MovieDao dao;
-
-        public MoviesController()
-        {
-            dao = new MovieDao();
-        }
+        private MovieDao dao = new MovieDao();
 
         // GET: Movie
         public ActionResult Index()
         {
             return Json(new { Id = 1, Name = "simon" }, JsonRequestBehavior.AllowGet);
         }
-
-        [Route("")]
+        
         [HttpGet]
-        public ActionResult Get()
+        public ActionResult GetMovies(string movieGenre, string searchString)
         {
-            var movies = dao.GetMovies();
+            var movies = dao.GetMovies(movieGenre, searchString);
+            return Json(movies, JsonRequestBehavior.AllowGet);
+        }
 
-            return Json(new { movies }, JsonRequestBehavior.AllowGet);
+        //Index화면 장르 목록
+        [HttpGet]
+        public ActionResult GetGenres()
+        {
+            var genre = dao.GetGenres();
+            return Json(genre, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult GetMovie(int id)
+        {
+            var movies = dao.GetMovie(id);
+            return Json(movies, JsonRequestBehavior.AllowGet);
         }
 
         [HttpDelete]
@@ -36,15 +44,14 @@ namespace MovieAPI.Controllers
         {
             var movies = dao.DeleteMovie(id);
 
-            if(movies == true)
+            if (movies == true)
             {
-                var result = dao.GetMovies();
-
-                return Json(new { result });
+                var result = dao.GetMovies("", "");
+                return Json( result );
             }
             else
             {
-                return Json(new { reason = "Fail"});
+                return Json(null);
             }
         }
 
@@ -55,9 +62,8 @@ namespace MovieAPI.Controllers
 
             if (movies == true)
             {
-                var result = dao.GetMovies();
-
-                return Json(new { result });
+                var result = dao.GetMovies("", "");
+                return Json( result );
             }
             else
             {
@@ -71,12 +77,10 @@ namespace MovieAPI.Controllers
             if (ModelState.IsValid)
             {
                 var result = dao.EditMovie(movie);
-
                 if (result == true)
                 {
-                    var movies = dao.GetMovies();
-
-                    return Json(new { movies });
+                    var movies = dao.GetMovies("", "");
+                    return Json(movies);
                 }
                 else
                 {
