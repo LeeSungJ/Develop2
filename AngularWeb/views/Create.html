@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="../JS/angular.min.js"></script>
+    <script src="../JS/angular-route.min.js"></script>
+    <!-- favicon?? -->
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <!-- JQuery -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.0.min.js"></script>
+</head>
+
+<body>
+    <div ng-app="createApp">
+        <div ng-controller="Create">
+            Title: <input type="text" ng-model="title" name="title" /><br />
+            ReleaseDate: <input type="text" ng-model="releaseDate" name="ReleaseDate" /><br />
+            Genre: <input type="text" ng-model="genre" name="Genre" /><br />
+            Price: <input type="text" ng-model="price" name="Price" /><br />
+            Rating: <input type="text" ng-model="rating" name="Rating" /><br />
+            Reivew: <input type="text" ng-model="review" name="Reivew" /><br />
+            <button ng-click="postRequest()">Post</button>
+        </div>
+    </div>
+</body>
+
+</html>

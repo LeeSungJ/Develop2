@@ -18,7 +18,6 @@ namespace RealTest.Migrations
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                     })
                 .PrimaryKey(t => t.ID);
-            
         }
         
         public override void Down()
