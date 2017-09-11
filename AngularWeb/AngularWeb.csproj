@@ -66,6 +66,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Home.html" />
+    <Content Include="JS\angular-route.min.js" />
+    <Content Include="JS\angular.min.js" />
+    <Content Include="JS\jquery-3.2.1.min.js" />
+    <Content Include="JS\jQuery.js" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -76,14 +80,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="movie.html" />
-    <Content Include="JS\angular-route.min.js" />
-    <Content Include="JS\angular.min.js" />
     <Content Include="routeHome.js" />
     <Content Include="views\Create.html" />
     <Content Include="views\Delete.html" />
     <Content Include="views\Detail.html" />
     <Content Include="views\Edit.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />

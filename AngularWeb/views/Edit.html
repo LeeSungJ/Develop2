@@ -3,8 +3,40 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <script src="../JS/angular.min.js"></script>
+    <script src="../JS/angular-route.min.js"></script>
+    <script src="../routeHome.js"></script>
+    <!-- favicon?? -->
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <!-- JQuery -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.0.min.js"></script>
 </head>
 <body>
+    <div ng-controller="Edit">
+        <div >
+            Title : <input type="text" name="title" ng-model="movies.Title"/>
+        </div>
 
+        <div>
+            ReleaseDate : <input type="text" id="name" name="releaseDate" ng-model="movies.ReleaseDate"/>
+        </div>
+
+        <div>
+            Genre : <input type="text" name="genre" ng-model="movies.Genre"/>
+        </div>
+
+        <div>
+            Price : <input type="text" name="price" ng-model="movies.Price"/>
+        </div>
+
+        <div>
+            Rating : <input type="text" name="rating" ng-model="movies.Rating"/>
+        </div>
+
+        <div>
+            Review : <input type="text" name="review" ng-model="movies.Review"/>
+        </div>
+        <button ng-click="edit()">Edit</button>
+    </div>
 </body>
 </html>

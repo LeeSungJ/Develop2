@@ -9,17 +9,30 @@
     <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
     <!-- JQuery -->
     <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('input[name=releaseDate]').on('keyup', function (event) {
+                var date = $(this).val();
+                var format = /^(20[1-9][0-9]|20\d{2})-(0[0-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/;
+                if (format.test(date) === false) {
+                    $('#vali').text("ex)0000-00-00(2000-01-01 ~ 2099-12-31)");
+                } else {
+                    $('#vali').text("");
+                }
+            });
+        })
+    </script>
 </head>
 
 <body>
-    <div ng-app="createApp">
+    <div>
         <div ng-controller="Create">
             Title: <input type="text" ng-model="title" name="title" /><br />
-            ReleaseDate: <input type="text" ng-model="releaseDate" name="ReleaseDate" /><br />
-            Genre: <input type="text" ng-model="genre" name="Genre" /><br />
-            Price: <input type="text" ng-model="price" name="Price" /><br />
-            Rating: <input type="text" ng-model="rating" name="Rating" /><br />
-            Reivew: <input type="text" ng-model="review" name="Reivew" /><br />
+            ReleaseDate: <input type="text" id="tq" ng-model="releaseDate" name="releaseDate" /> <span id="vali"></span><br />
+            Genre: <input type="text" ng-model="genre" name="genre" /><br />
+            Price: <input type="text" ng-model="price" name="price" /><br />
+            Rating: <input type="text" ng-model="rating" name="rating" /><br />
+            Reivew: <input type="text" ng-model="review" name="reivew" /><br />
             <button ng-click="postRequest()">Post</button>
         </div>
     </div>

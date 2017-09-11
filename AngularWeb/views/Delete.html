@@ -1,10 +1,42 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <script src="../JS/angular.min.js"></script>
+    <script src="../JS/angular-route.min.js"></script>
+    <script src="../routeHome.js"></script>
+    <!-- favicon?? -->
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <!-- JQuery -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.0.min.js"></script>
     <meta charset="utf-8" />
     <title></title>
 </head>
 <body>
+    <div ng-controller="Delete">
+        <div>
+            Title : <input type="text" readonly ng-model="movies.Title" style="border:none;" />
+        </div>
 
+        <div>
+            ReleaseDate : <input type="text" readonly ng-model="movies.ReleaseDate" style="border:none;" />
+        </div>
+
+        <div>
+            Genre : <input type="text" readonly ng-model="movies.Genre" style="border:none;" />
+        </div>
+
+        <div>
+            Price : <input type="text" readonly ng-model="movies.Price" style="border:none;" />
+        </div>
+
+        <div>
+            Rating : <input type="text" readonly ng-model="movies.Rating" style="border:none;" />
+        </div>
+
+        <div>
+            Review : <input type="text" readonly ng-model="movies.Review" style="border:none;" />
+        </div>
+        <button ng-click="delete()">Delete</button>
+    </div>
 </body>
 </html>

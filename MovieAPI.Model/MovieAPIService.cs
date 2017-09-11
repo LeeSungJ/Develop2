@@ -19,16 +19,17 @@ namespace MovieAPI.Model
     {
         public IEnumerable<Movie> GetMovies(string movieGenre, string searchString)
         {
-            using (var client = new HttpClient()) {
+            using (var client = new HttpClient())
+            {
                 var domain = "http://localhost/";
                 client.BaseAddress = new Uri(domain);
                 // JSON 형식에 대한 Accept 헤더 추가
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 //GetAsync는 HTTP GET 요청을 전송.(비동기적)
-                
+
                 var response = client.GetAsync("movies/GetMovies/?movieGenre=" + movieGenre + "&SearchString=" + searchString).Result;
                 if (response.IsSuccessStatusCode)
-                {     
+                {
                     var result = response.Content.ReadAsStringAsync().Result;
                     var movies = JsonConvert.DeserializeObject<IList<Movie>>(result);
 
@@ -61,12 +62,12 @@ namespace MovieAPI.Model
                 {
                     throw new HttpResponseException(HttpStatusCode.NotFound);
                 }
-            } 
+            }
         }
-        
+
         public Movie GetMovie(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
@@ -117,7 +118,7 @@ namespace MovieAPI.Model
 
         public bool DeleteMovie(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
@@ -186,5 +187,5 @@ namespace MovieAPI.Model
 
         [StringLength(5)]
         public string Review { get; set; }
-     }
+    }
 }
