@@ -69,7 +69,6 @@
     <Content Include="JS\angular-route.min.js" />
     <Content Include="JS\angular.min.js" />
     <Content Include="JS\jquery-3.2.1.min.js" />
-    <Content Include="JS\jQuery.js" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

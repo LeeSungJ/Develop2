@@ -39,7 +39,7 @@ namespace MovieAPI.Controllers
             return Json(movies, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpDelete]
+        [HttpGet]
         public ActionResult Delete(int id)
         {
             var movies = dao.DeleteMovie(id);
@@ -47,7 +47,7 @@ namespace MovieAPI.Controllers
             if (movies == true)
             {
                 var result = dao.GetMovies("", "");
-                return Json( result );
+                return Json( result, JsonRequestBehavior.AllowGet);
             }
             else
             {
