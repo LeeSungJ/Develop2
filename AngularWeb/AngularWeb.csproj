@@ -65,10 +65,15 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Create\Controller\create.controller.js" />
+    <Content Include="Delete\Controller\delete.controller.js" />
+    <Content Include="Detail\Controller\detail.controller.js" />
+    <Content Include="Edit\Controller\edit.controller.js" />
     <Content Include="Home.html" />
     <Content Include="JS\angular-route.min.js" />
     <Content Include="JS\angular.min.js" />
     <Content Include="JS\jquery-3.2.1.min.js" />
+    <Content Include="Movie\Controller\movie.controller.js" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -78,12 +83,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="movie.html" />
+    <Content Include="Movie\View\movie.html" />
     <Content Include="routeHome.js" />
-    <Content Include="views\Create.html" />
-    <Content Include="views\Delete.html" />
-    <Content Include="views\Detail.html" />
-    <Content Include="views\Edit.html" />
+    <Content Include="Create\View\Create.html" />
+    <Content Include="Delete\View\Delete.html" />
+    <Content Include="Detail\View\Detail.html" />
+    <Content Include="Edit\View\Edit.html" />
+    <Content Include="validation.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -91,9 +97,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controller\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

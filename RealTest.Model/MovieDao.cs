@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
-
-
+using System.Text.RegularExpressions;
 
 namespace RealTest.Model
 {
@@ -57,6 +56,18 @@ namespace RealTest.Model
                 }
                 else
                 {
+                    //bool title = movie.Title.Any(char.IsUpper);
+                    //if(title == false)
+                    //{
+                    //    return false;
+                    //}
+                    var title = movie.Title;
+                    var result = Regex.IsMatch(title, @"^[A-Z]{1,30}$");
+                    if(result == false)
+                    {
+                        return false;
+                    }
+                    
                     var edit = db.Entry(movie).State = EntityState.Modified;
                     var dbChange = db.SaveChanges();
                 }
