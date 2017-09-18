@@ -1,18 +1,14 @@
 ﻿var app = angular.module('routeApp');
 
-app.controller('Detail', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
+app.controller('Detail', ['$scope', '$http', '$routeParams', 'movieFactory', function ($scope, $http, $routeParams, movieFactory) {
 	var id = $routeParams.movieID;
 
-	var res = $http({
-		url: ('http://localhost/movies/GetMovie/' + id),
-		method: 'GET'
-	})
+	movieFactory.getMovie(id)
 		.success(function (data) {
 			$scope.movies = data;
-			var releDate = moment($scope.movies.ReleaseDate).format("YYYY-MM-DD");
-			$scope.movies.ReleaseDate = releDate;
+			$scope.movies.ReleaseDate = moment($scope.movies.ReleaseDate).format("YYYY-MM-DD");
 		})
 		.error(function (data) {
-			console.log("error");
+			alert("불러오기 실패");
 		})
 }]);

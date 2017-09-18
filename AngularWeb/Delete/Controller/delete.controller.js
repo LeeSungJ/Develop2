@@ -1,12 +1,9 @@
 ﻿var app = angular.module('routeApp');
 
-app.controller('Delete', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
+app.controller('Delete', ['$scope', '$http', '$routeParams', 'movieFactory', function ($scope, $http, $routeParams, movieFactory) {
 	var id = $routeParams.movieID;
 
-	var res = $http({
-		url: ('http://localhost/movies/GetMovie/' + id),
-		method: 'GET'
-	})
+	movieFactory.getMovie(id)
 		.success(function (data) {
 			$scope.movies = data;
 			var releDate = moment($scope.movies.ReleaseDate).format("YYYY-MM-DD");
@@ -16,21 +13,8 @@ app.controller('Delete', ['$scope', '$http', '$routeParams', function ($scope, $
 			console.log("error");
 		})
 
-	var jsonToUrlString = function (json) {
-		var string = '';
-
-		string = Object.keys(json).map(function (key) {
-			return encodeURIComponent(key) + '=' + encodeURIComponent(json[key]);
-		}).join('&');
-
-		return string;
-	};
-
 	$scope.delete = function () {
-		$http({
-			url: 'http://localhost/movies/Delete/' + id,
-			method: 'GET'
-		})
+		movieFactory.deleteMovie(id)
 			.success(function (moviesdata, stat) {
 				alert("삭제되었습니다.")
 			})

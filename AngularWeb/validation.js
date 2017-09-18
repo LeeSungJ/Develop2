@@ -35,11 +35,11 @@ function validation(data) {
 		return false;
 	}
 	if (stringFormat.test(data.Rating) === false) {
-		alert("첫 문자는 대문자, 글자 수 유의.(ex.Five, 1~5자)");
+		alert("첫 문자는 대문자, 글자 수 유의.(ex.Five, 3~5자)");
 		return false;
 	}
 	if (stringFormat.test(data.Review) === false) {
-		alert("첫 문자는 대문자, 글자 수 유의.(ex.Good, 1~5자)");
+		alert("첫 문자는 대문자, 글자 수 유의.(ex.Good, 3~5자)");
 		return false;
 	}
 	return true
@@ -84,7 +84,7 @@ function priceCheck(value) {
 function ratingCheck(value) {
 	var rating = value;
 	if (stringFormat.test(rating) === false) {
-		$('#checkRating').text("첫 문자는 대문자, 3 ~ 60자");
+		$('#checkRating').text("첫 문자는 대문자, 3 ~ 5자");
 	} else {
 		$('#checkRating').text("");
 	}
@@ -93,7 +93,7 @@ function ratingCheck(value) {
 function reviewCheck(value) {
 	var review = value;
 	if (stringFormat.test(review) === false) {
-		$('#checkReview').text("첫 문자는 대문자, 3 ~ 60자");
+		$('#checkReview').text("첫 문자는 대문자, 3 ~ 5자");
 	} else {
 		$('#checkReview').text("");
 	}

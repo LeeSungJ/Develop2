@@ -1,14 +1,9 @@
 ﻿var app = angular.module('routeApp');
 
-app.controller('Movie', ['$scope', '$http', function ($scope, $http) {
-	$http({
-		method: 'GET',
-		url: 'http://localhost/movies/GetMovies'
-	})
+app.controller('Movie', ['$scope', '$http', 'movieFactory', function ($scope, $http, movieFactory) {
+	movieFactory.getMovies()
 		.success(function (data) {
 			$scope.movies = data;
-			var releDate = moment($scope.movies.ReleaseDate).format("YYYY-MM-DD");
-			$scope.movies.ReleaseDate = releDate;
 		})
 }]);
 

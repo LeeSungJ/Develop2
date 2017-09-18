@@ -69,6 +69,7 @@
     <Content Include="Delete\Controller\delete.controller.js" />
     <Content Include="Detail\Controller\detail.controller.js" />
     <Content Include="Edit\Controller\edit.controller.js" />
+    <Content Include="Factory\movieFactory.js" />
     <Content Include="Home.html" />
     <Content Include="JS\angular-route.min.js" />
     <Content Include="JS\angular.min.js" />

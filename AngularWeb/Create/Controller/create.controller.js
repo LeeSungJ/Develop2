@@ -1,15 +1,6 @@
 ﻿var app = angular.module('routeApp')
 
-app.controller('Create', function ($scope, $http) {
-	var jsonToUrlString = function (json) {
-		var string = '';
-
-		string = Object.keys(json).map(function (key) {
-			return encodeURIComponent(key) + '=' + encodeURIComponent(json[key]);
-		}).join('&');
-
-		return string;
-	};
+app.controller('Create', ['$scope', '$http', 'movieFactory', function ($scope, $http, movieFactory) {
 
 	$scope.postRequest = function (moviesData) {
 		var Data = {
@@ -26,11 +17,7 @@ app.controller('Create', function ($scope, $http) {
 		if (result === true) {
 			moviesData = jsonToUrlString(Data);
 
-			$http({
-				url: 'http://localhost/movies/Post',
-				method: 'POST',
-				data: moviesData
-			})
+			movieFactory.createMovie(moviesData)
 				.success(function (data, stat) {
 					alert("추가되었습니다.")
 				})
@@ -82,4 +69,4 @@ app.controller('Create', function ($scope, $http) {
 			reviewCheck(review);
 		}
 	}
-});
+}]);

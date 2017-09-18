@@ -1,18 +1,15 @@
 ﻿var app = angular.module('routeApp');
 
-app.controller('Edit', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
+app.controller('Edit', ['$scope', '$http', '$routeParams', 'movieFactory', function ($scope, $http, $routeParams, movieFactory) {
 	var id = $routeParams.movieID;
 
-	var res = $http({
-		url: ('http://localhost/movies/GetMovie/' + id),
-		method: 'GET'
-	})
+	movieFactory.getMovie(id)
 		.success(function (data) {
 			$scope.movie = data;
 			$scope.movie.ReleaseDate = moment($scope.movie.ReleaseDate).format("YYYY-MM-DD");
 		})
 		.error(function (data) {
-			console.log("error");
+			alert("불러오기 실패");
 		})
 
 	$scope.edit = function () {
@@ -31,12 +28,7 @@ app.controller('Edit', ['$scope', '$http', '$routeParams', function ($scope, $ht
 		if (result === true) {
 			moviesData = jsonToUrlString(Data);
 
-			$http
-				({
-					url: 'http://localhost/movies/Edit/' + id,
-					method: 'POST',
-					data: moviesData
-				})
+			movieFactory.editMovie(id, moviesData)
 				.success(function (data) {
 					alert("수정에 성공했습니다.")
 				})
