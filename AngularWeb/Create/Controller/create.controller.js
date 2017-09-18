@@ -1,6 +1,6 @@
 ﻿var app = angular.module('routeApp')
 
-app.controller('Create', ['$scope', '$http', 'movieFactory', 'realtimeValidation', function ($scope, $http, movieFactory, realtimeValidation) {
+app.controller('Create', ['$scope', '$http', 'movieFactory', function ($scope, $http, movieFactory) {
 
 	$scope.postRequest = function (moviesData) {
 		var Data = {
