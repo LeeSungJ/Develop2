@@ -1,6 +1,6 @@
 ﻿var app = angular.module('routeApp')
 
-app.controller('Create', ['$scope', '$http', 'movieFactory', function ($scope, $http, movieFactory) {
+app.controller('Create', ['$scope', '$http', 'movieFactory', 'realtimeValidation', function ($scope, $http, movieFactory, realtimeValidation) {
 
 	$scope.postRequest = function (moviesData) {
 		var Data = {
@@ -26,47 +26,5 @@ app.controller('Create', ['$scope', '$http', 'movieFactory', function ($scope, $
 				})
 		}
 	};
-
-	$scope.titleKeyup = function () {
-		var title = $scope.movie.Title;
-
-		if (title !== '') {
-			titleCheck(title);
-		}
-	}
-	$scope.dateKeyup = function () {
-		var date = $scope.movie.ReleaseDate;
-
-		if (date !== '') {
-			dateCheck(date);
-		}
-	}
-	$scope.genreKeyup = function () {
-		var genre = $scope.movie.Genre;
-
-		if (genre !== '') {
-			genreCheck(genre);
-		}
-	}
-	$scope.priceKeyup = function () {
-		var price = $scope.movie.Price;
-
-		if (price !== '') {
-			priceCheck(price);
-		}
-	}
-	$scope.ratingKeyup = function () {
-		var rating = $scope.movie.Rating;
-
-		if (rating !== '') {
-			ratingCheck(rating);
-		}
-	}
-	$scope.reviewKeyup = function () {
-		var review = $scope.movie.Review;
-
-		if (review !== '') {
-			reviewCheck(review);
-		}
-	}
+	
 }]);

@@ -5,18 +5,19 @@
 	<title></title>
 </head>
 <body>
-	Title: <input type="text" ng-keyup="titleKeyup()" ng-model="movie.Title" name="title" /><br />
+	Title: <input type="text" onkeyup="titleKeyup()" ng-model="movie.Title" id="title" /><br />
 	<div id="checkTitle"></div>
-	ReleaseDate: <input type="text" id="tq" ng-keyup="dateKeyup()" ng-model="movie.ReleaseDate" name="releaseDate" /><br />
+	ReleaseDate: <input type="text" onkeyup="dateKeyup()" ng-model="movie.ReleaseDate" id="releaseDate" /><br />
 	<div id="checkReleaseDate"></div>
-	Genre: <input type="text" ng-keyup="genreKeyup()" ng-model="movie.Genre" name="genre" /><br />
+	Genre: <input type="text" onkeyup="genreKeyup()" ng-model="movie.Genre" id="genre" /><br />
 	<div id="checkGenre"></div>
-	Price: <input type="text" ng-keyup="priceKeyup()" ng-model="movie.Price" name="price" /><br />
+	Price: <input type="text" onkeyup="priceKeyup()" ng-model="movie.Price" id="price" /><br />
 	<div id="checkPrice"></div>
-	Rating: <input type="text" ng-keyup="ratingKeyup()" ng-model="movie.Rating" name="rating" /><br />
+	Rating: <input type="text" onkeyup="ratingKeyup()" ng-model="movie.Rating" id="rating" /><br />
 	<div id="checkRating"></div>
-	Reivew: <input type="text" ng-keyup="reviewKeyup()" ng-model="movie.Review" name="review" /><br />
+	Reivew: <input type="text" onkeyup="reviewKeyup()" ng-model="movie.Review" id="review" /><br />
 	<div id="checkReview"></div>
+	<span id="validationResult"></span>
 	<button ng-click="postRequest()">Post</button>
 </body>
 </html>

@@ -37,48 +37,4 @@ app.controller('Edit', ['$scope', '$http', '$routeParams', 'movieFactory', funct
 				})
 		}
 	};
-
-	$scope.titleKeyup = function () {
-		var title = $scope.movie.Title;
-
-		if (title !== '') {
-			titleCheck(title);
-		}
-	}
-	$scope.dateKeyup = function () {
-		var date = $scope.movie.ReleaseDate;
-
-		if (date !== '') {
-			dateCheck(date);
-		}
-	}
-	$scope.genreKeyup = function () {
-		var genre = $scope.movie.Genre;
-
-		if (genre !== '') {
-			genreCheck(genre);
-		}
-	}
-	$scope.priceKeyup = function () {
-		var price = $scope.movie.Price;
-
-		if (price !== '') {
-			priceCheck(price);
-		}
-	}
-	$scope.ratingKeyup = function () {
-		var rating = $scope.movie.Rating;
-
-		if (rating !== '') {
-			ratingCheck(rating);
-		}
-	}
-	$scope.reviewKeyup = function () {
-		var review = $scope.movie.Review;
-
-		if (review !== '') {
-			reviewCheck(review);
-		}
-	}
-
 }]);
