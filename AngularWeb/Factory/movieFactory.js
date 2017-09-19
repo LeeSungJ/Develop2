@@ -24,5 +24,13 @@ app.factory('movieFactory', ['$http', function ($http) {
 		return $http.get(baseUrl + "Delete/" + id);
 	}
 
+	movieFactory.getGenres = function () {
+		return $http.get(baseUrl + "GetGenres");
+	}
+
+	movieFactory.searchMovie = function (genre, searchTitle) {
+		return $http.get(baseUrl + "GetMovies/?movieGenre=" + genre + "&&searchString=" + searchTitle);
+	}
+
 	return movieFactory;
 }])

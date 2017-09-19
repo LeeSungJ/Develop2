@@ -66,14 +66,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Create\Controller\create.controller.js" />
+    <Content Include="Css\angular-datatables.css" />
+    <Content Include="Css\dataTables.jqueryui.min.css" />
     <Content Include="Delete\Controller\delete.controller.js" />
     <Content Include="Detail\Controller\detail.controller.js" />
     <Content Include="Edit\Controller\edit.controller.js" />
     <Content Include="Factory\movieFactory.js" />
     <Content Include="Home.html" />
+    <Content Include="JS\angular-datatables.min.js" />
     <Content Include="JS\angular-route.min.js" />
     <Content Include="JS\angular.min.js" />
+    <Content Include="JS\dataTables.jqueryui.min.js" />
     <Content Include="JS\jquery-3.2.1.min.js" />
+    <Content Include="JS\jquery.dataTables.min.js" />
     <Content Include="Movie\Controller\movie.controller.js" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">

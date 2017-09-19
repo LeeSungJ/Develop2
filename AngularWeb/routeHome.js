@@ -1,4 +1,4 @@
-﻿var app = angular.module('routeApp', ['ngRoute']);
+﻿var app = angular.module('routeApp', ['ngRoute', 'datatables']);
 app.config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
 	$httpProvider.defaults.useXDomain = true;
 	delete $httpProvider.defaults.headers.common['X-Requested-With'];

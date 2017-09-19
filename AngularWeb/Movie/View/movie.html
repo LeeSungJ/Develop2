@@ -6,32 +6,40 @@
 </head>
 <body>
 	<div>
-		<table class="table table-striped">
-			<tr>
-				<th>Title</th>
-				<th>ReleaseDate</th>
-				<th>Genre</th>
-				<th>Price</th>
-				<th>Rating</th>
-				<th>Review</th>
-				<th></th>
-			</tr>
-			<tr ng-repeat="m in movies">
-				<td>{{m.Title}}</td>
-				<td>{{m.ReleaseDate | myDate | date: 'yyyy-MM-dd' }} </td>
-				<td>{{m.Genre}}</td>
-				<td>{{m.Price}}</td>
-				<td>{{m.Rating}}</td>
-				<td>{{m.Review}}</td>
-				<td>
-					<a href="#edit/{{m.ID}}">Edit |</a>
-					<a href="#detail/{{m.ID}}">Detail |</a>
-					<a href="#delete/{{m.ID}}">Delete |</a>
-				</td>
-
-			</tr>
+		Genre:
+		<select id="genreList">
+			<option></option>
+			<option ng-repeat="genre in genres">{{genre}}</option>
+		</select>
+		<button id="searchButton" ng-click="search()">Search</button>
+		<table datatable="ng" dt-options="dtOptions">
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>ReleaseDate</th>
+					<th>Genre</th>
+					<th>Price</th>
+					<th>Rating</th>
+					<th>Review</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="m in movies">
+					<td>{{m.Title}}</td>
+					<td>{{m.ReleaseDate | myDate | date: 'yyyy-MM-dd' }} </td>
+					<td>{{m.Genre}}</td>
+					<td>{{m.Price | currency:"$":1}}</td>
+					<td>{{m.Rating}}</td>
+					<td>{{m.Review}}</td>
+					<td>
+						<a href="#edit/{{m.ID}}">Edit |</a>
+						<a href="#detail/{{m.ID}}">Detail |</a>
+						<a href="#delete/{{m.ID}}">Delete |</a>
+					</td>
+				</tr>
+			</tbody>
 		</table>
 	</div>
-
 </body>
 </html>
