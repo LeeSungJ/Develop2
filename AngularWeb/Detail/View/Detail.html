@@ -3,32 +3,43 @@
 <head>
 	<meta charset="utf-8" />
 	<title></title>
-
 </head>
 <body>
-	<div>
-		Title : <input type="text" readonly ng-model="movies.Title" style="border:none;" />
-	</div>
+	<div class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Detail</h4>
+				</div>
+				<div class="modal-body">
+					<div>
+						Title : {{movies.Title}}
+					</div>
 
-	<div>
-		ReleaseDate : <input type="text" readonly ng-model="movies.ReleaseDate" style="border:none;" />
-	</div>
+					<div>
+						ReleaseDate : {{movies.ReleaseDate}}
+					</div>
 
-	<div>
-		Genre : <input type="text" readonly ng-model="movies.Genre" style="border:none;" />
-	</div>
+					<div>
+						Genre : {{movies.Genre}}
+					</div>
 
-	<div>
-		Price : <input type="text" readonly ng-model="movies.Price" style="border:none;" />
-	</div>
+					<div>
+						Price : {{movies.Price}}
+					</div>
 
-	<div>
-		Rating : <input type="text" readonly ng-model="movies.Rating" style="border:none;" />
-	</div>
+					<div>
+						Rating : {{movies.Rating}}
+					</div>
 
-	<div>
-		Review : <input type="text" readonly ng-model="movies.Review" style="border:none;" />
+					<div>
+						Review : {{movies.Review}}
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-	<a href="#movieList">List</a>
+	
 </body>
 </html>

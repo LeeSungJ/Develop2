@@ -29,17 +29,19 @@
 					<td>{{m.Title}}</td>
 					<td>{{m.ReleaseDate | myDate | date: 'yyyy-MM-dd' }} </td>
 					<td>{{m.Genre}}</td>
-					<td>{{m.Price | currency:"$":1}}</td>
+					<td>{{m.Price | currency:"$":0}}</td>
 					<td>{{m.Rating}}</td>
 					<td>{{m.Review}}</td>
 					<td>
-						<a href="#edit/{{m.ID}}">Edit |</a>
-						<a href="#detail/{{m.ID}}">Detail |</a>
-						<a href="#delete/{{m.ID}}">Delete |</a>
+						<button ng-click="edit()">Edit</button> |
+						<button ng-click="detail()">Detail</button> |
+						<button ng-click="delete()">Delete</button>						
 					</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
+
+	
 </body>
 </html>

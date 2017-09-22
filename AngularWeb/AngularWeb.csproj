@@ -67,6 +67,7 @@
   <ItemGroup>
     <Content Include="Create\Controller\create.controller.js" />
     <Content Include="Css\angular-datatables.css" />
+    <Content Include="Css\bootstrap.min.css" />
     <Content Include="Css\dataTables.jqueryui.min.css" />
     <Content Include="Delete\Controller\delete.controller.js" />
     <Content Include="Detail\Controller\detail.controller.js" />
@@ -74,13 +75,19 @@
     <Content Include="Factory\movieFactory.js" />
     <Content Include="Home.html" />
     <Content Include="JS\angular-datatables.min.js" />
+    <Content Include="JS\angular-modal-service.js" />
     <Content Include="JS\angular-route.min.js" />
     <Content Include="JS\angular.min.js" />
+    <Content Include="JS\bootstrap.min.js" />
     <Content Include="JS\dataTables.jqueryui.min.js" />
     <Content Include="JS\jquery-3.2.1.min.js" />
     <Content Include="JS\jquery.dataTables.min.js" />
+    <Content Include="JS\ui-bootstrap-tpls-2.5.0.min.js" />
     <Content Include="Movie\Controller\movie.controller.js" />
     <Content Include="packages.config" />
+    <Content Include="font\glyphicons-halflings-regular.ttf" />
+    <Content Include="font\glyphicons-halflings-regular.woff" />
+    <Content Include="font\glyphicons-halflings-regular.woff2" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

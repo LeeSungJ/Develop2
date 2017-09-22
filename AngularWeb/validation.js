@@ -15,92 +15,77 @@ function jsonToUrlString(json) {
 };
 
 function validation(data) {
-	
-	var testTitle = titleFormat.test(data.Title);
-	var testDate = dateFormat.test(data.ReleaseDate);
-	var testGenre = genreFormat.test(data.Genre);
-	var testPrice = priceFormat.test(data.Price);
-	var testRating = stringFormat.test(data.Rating);
-	var testReview = stringFormat.test(data.Review);
 
-	if (testTitle === false || testDate === false || testGenre === false || testPrice === false || testRating === false || testReview === false) {
-
-		if (testTitle === false) {
-			$('#titleResult').html("Title: 첫 문자는 대문자, 글자 수 유의.(ex.Title, 3~60자)<br/>");
+	if (titleCheck(data.Title) === false || dateCheck(data.ReleaseDate) === false || genreCheck(data.Genre) === false || priceCheck(data.Price) === false || ratingCheck(data.Rating) === false || reviewCheck(data.Review) === false) {
+		if (titleCheck(title) === false) {
+			$('#checkTitle').html(" 첫 문자는 대문자, 글자 수 유의.(ex.Title, 3~60자)<br/>");
 		}
-		if (testDate === false) {
-			$('#dateResult').html("ReleaseDate: 날짜를 올바르게 입력해 주세요(ex. 2011- 11 - 11) <br/>");
+		if (dateCheck(date) === false) {
+			$('#checkReleaseDate').html(" 날짜를 올바르게 입력해 주세요(ex. 2011- 11 - 11) <br/>");
 		}
-		if (testGenre === false) {
-			$('#genreResult').html("Genre: 첫 문자는 대문자, 글자 수 유의.(ex.Action, 3~30자)<br/>");
+		if (genreCheck(genre) === false) {
+			$('#checkGenre').html(" 첫 문자는 대문자, 글자 수 유의.(ex.Action, 3~30자)<br/>");
 		}
-		if (testPrice === false) {
-			$('#priceResult').html("Pirce: 숫자만 입력 가능.(99까지 가능)<br/>");
+		if (priceCheck(price) === false) {
+			$('#checkPrice').html(" 숫자만 입력 가능.(99까지 가능)<br/>");
 		}
-		if (testRating === false) {
-			$('#ratingResult').html("Rating: 첫 문자는 대문자, 글자 수 유의.(ex.Five, 3~5자)<br/>");
+		if (ratingCheck(rating) === false) {
+			$('#checkRating').html(" 첫 문자는 대문자, 글자 수 유의.(ex.Five, 3~5자)<br/>");
 		}
-		if (testReview === false) {
-			$('#reviewResult').html("Review: 첫 문자는 대문자, 글자 수 유의.(ex.Good, 3~5자)<br/>");
+		if (reviewCheck(review) === false) {
+			$('#checkReview').html(" 첫 문자는 대문자, 글자 수 유의.(ex.Good, 3~5자)<br/>");
 		}
-		$('#validationResult').html(result);
 		return false;
 	}
 	return true;
 };
 
 function titleCheck(value) {
-	var title = value;
-	if (titleFormat.test(title) === false) {
+	if (titleFormat.test(value) === false) {
 		$('#checkTitle').text("첫 문자는 대문자, 3 ~ 60자");
+		return false;
 	} else {
 		$('#checkTitle').text("");
-		$('#titleResult').html("");
 	}
 }
 function dateCheck(value) {
-	var date = value;
-	if (dateFormat.test(date) === false) {
+	if (dateFormat.test(value) === false) {
 		$('#checkReleaseDate').text("날짜를 올바르게 입력해 주세요(ex. 2011-11-11)");
+		return false;
 	} else {
 		$('#checkReleaseDate').text("");
-		$('#dateResult').html("");
 	}
 }
 function genreCheck(value) {
-	var genre = value;
-	if (genreFormat.test(genre) === false) {
+	if (genreFormat.test(value) === false) {
 		$('#checkGenre').text("첫 문자는 대문자, 3 ~ 60자");
+		return false;
 	} else {
 		$('#checkGenre').text("");
-		$('#genreResult').html("");
 	}
 }
 function priceCheck(value) {
-	var price = value;
-	if (priceFormat.test(price) === false) {
+	if (priceFormat.test(value) === false) {
 		$('#checkPrice').text("Price는 숫자만 입력 가능.(99까지 가능)");
+		return false;
 	} else {
 		$('#checkPrice').text("");
-		$('#priceResult').html("");
 	}
 }
 function ratingCheck(value) {
-	var rating = value;
-	if (stringFormat.test(rating) === false) {
+	if (stringFormat.test(value) === false) {
 		$('#checkRating').text("첫 문자는 대문자, 3 ~ 5자");
+		return false;
 	} else {
 		$('#checkRating').text("");
-		$('#ratingResult').html("");
 	}
 }
 function reviewCheck(value) {
-	var review = value;
-	if (stringFormat.test(review) === false) {
+	if (stringFormat.test(value) === false) {
 		$('#checkReview').text("첫 문자는 대문자, 3 ~ 5자");
+		return false;
 	} else {
 		$('#checkReview').text("");
-		$('#reviewResult').html("");
 	}
 }
 

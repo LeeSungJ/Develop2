@@ -1,14 +1,17 @@
 ﻿var app = angular.module('routeApp');
 
-app.controller('Edit', ['$scope', '$http', '$routeParams', 'movieFactory', function ($scope, $http, $routeParams, movieFactory) {
-	var id = $routeParams.movieID;
-
+app.controller('Edit', ['$scope', '$http', '$routeParams', 'movieFactory', 'id', 'close', function ($scope, $http, $routeParams, movieFactory, id, close) {
 	movieFactory.getMovie(id)
 		.success(function (data) {
-			$scope.movie = data;
-			$scope.movie.ReleaseDate = moment($scope.movie.ReleaseDate).format("YYYY-MM-DD");
+			if (data !== null && data !== "") {
+				$scope.movie = data;
+				$scope.movie.ReleaseDate = moment($scope.movie.ReleaseDate).format("YYYY-MM-DD");
+				return;
+			}
+			alert("값이 Null 또는 Empty 입니다.");
+			return history.go();
 		})
-		.error(function (data) {
+		.error(function () {
 			alert("불러오기 실패");
 		})
 
@@ -29,12 +32,16 @@ app.controller('Edit', ['$scope', '$http', '$routeParams', 'movieFactory', funct
 			moviesData = jsonToUrlString(Data);
 
 			movieFactory.editMovie(id, moviesData)
-				.success(function (data) {
+				.success(function () {
 					alert("수정에 성공했습니다.")
 				})
-				.error(function (data) {
-					alert("수정에 실패했습니다.\n 조건을 잘 확인해 주세요")
+				.error(function (status) {
+					alert("실패했습니다.\n조건을 잘 확인해 주시기 바랍니다.\nerror code: " + status)
 				})
 		}
+	};
+
+	$scope.close = function (result) {
+		close(result, 500);
 	};
 }]);

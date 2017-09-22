@@ -5,36 +5,43 @@
 	<title></title>
 </head>
 <body>
+	<div class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" ng-click="close(false)" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Edit</h4>
+				</div>
+				<div class="modal-body">
+					<div>
+						Title : <input type="text" id="title" onkeyup="titleKeyup()" ng-model="movie.Title" /><div id="checkTitle"></div>
+					</div>
 
-	<div>
-		Title : <input type="text" id="title" onkeyup="titleKeyup()" ng-model="movie.Title" /><div id="checkTitle"></div>
+					<div>
+						ReleaseDate : <input type="text" id="releaseDate" onkeyup="dateKeyup()" ng-model="movie.ReleaseDate" /><div id="checkReleaseDate"></div>
+					</div>
+
+					<div>
+						Genre : <input type="text" id="genre" onkeyup="genreKeyup()" ng-model="movie.Genre" /><div id="checkGenre"></div>
+					</div>
+
+					<div>
+						Price : <input type="text" id="price" onkeyup="priceKeyup()" ng-model="movie.Price" /><div id="checkPrice"></div>
+					</div>
+
+					<div>
+						Rating : <input type="text" id="rating" onkeyup="ratingKeyup()" ng-model="movie.Rating" /><div id="checkRating"></div>
+					</div>
+
+					<div>
+						Review : <input type="text" id="review" onkeyup="reviewKeyup()" ng-model="movie.Review" /><div id="checkReview"></div>
+					</div>
+					<button ng-click="edit()">Edit</button>
+				</div>
+			</div>
+		</div>
 	</div>
 
-	<div>
-		ReleaseDate : <input type="text" id="releaseDate" onkeyup="dateKeyup()" ng-model="movie.ReleaseDate" /><div id="checkReleaseDate"></div>
-	</div>
 
-	<div>
-		Genre : <input type="text" id="genre" onkeyup="genreKeyup()" ng-model="movie.Genre" /><div id="checkGenre"></div>
-	</div>
-
-	<div>
-		Price : <input type="text" id="price" onkeyup="priceKeyup()" ng-model="movie.Price" /><div id="checkPrice"></div>
-	</div>
-
-	<div>
-		Rating : <input type="text" id="rating" onkeyup="ratingKeyup()" ng-model="movie.Rating" /><div id="checkRating"></div>
-	</div>
-
-	<div>
-		Review : <input type="text" id="review" onkeyup="reviewKeyup()" ng-model="movie.Review" /><div id="checkReview"></div>
-	</div>
-	<span id="titleResult"></span>
-	<span id="dateResult"></span>
-	<span id="genreResult"></span>
-	<span id="priceResult"></span>
-	<span id="ratingResult"></span>
-	<span id="reviewResult"></span>
-	<button ng-click="edit()">Edit</button>
 </body>
 </html>

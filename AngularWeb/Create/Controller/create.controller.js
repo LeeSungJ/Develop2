@@ -18,11 +18,11 @@ app.controller('Create', ['$scope', '$http', 'movieFactory', function ($scope, $
 			moviesData = jsonToUrlString(Data);
 
 			movieFactory.createMovie(moviesData)
-				.success(function (data, stat) {
+				.success(function () {
 					alert("추가되었습니다.")
 				})
-				.error(function (data, status) {
-					alert("실패했습니다.\n 조건을 잘 확인해주시기 바랍니다.")
+				.error(function (status) {
+					alert("실패했습니다.\n조건을 잘 확인해 주시기 바랍니다.\nerror code: " + status)
 				})
 		}
 	};

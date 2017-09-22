@@ -6,8 +6,10 @@
 	<script src="JS/jquery-3.2.1.min.js"></script>
 	<script src="JS/jquery.dataTables.min.js"></script>
 	<script src="JS/angular.min.js"></script>
+	<script src="JS/angular-modal-service.js"></script>
 	<script src="JS/angular-datatables.min.js"></script>
 	<script src="JS/angular-route.min.js"></script>
+	<script src="JS/bootstrap.min.js"></script>
 	<script src="routeHome.js"></script>
 	<script src="Movie/Controller/movie.controller.js"></script>
 	<script src="Create/Controller/create.controller.js"></script>
@@ -17,18 +19,22 @@
 	<script src="Factory/movieFactory.js"></script>
 	<script src="validation.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.6.0/moment.min.js"></script>
-	<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+	<link rel="stylesheet" href="Css/bootstrap.min.css" />
 	<link rel='stylesheet prefetch' href='https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css'>
 	<link rel="stylesheet" type="text/css" href="Css/dataTables.jqueryui.min.css" />
 	<link rel="stylesheet" type="text/css" href="Css/angular-datatables.css" />
+	<link rel="stylesheet" type="text/html" href="font/glyphicons-halflings-regular.ttf" />
+	<link rel="stylesheet" type="text/html" href="font/glyphicons-halflings-regular.woff" />
+	<link rel="stylesheet" type="text/html" href="font/glyphicons-halflings-regular.woff2" />
 	<!-- favicon?? -->
 	<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
 </head>
 
-<body>
+<body class="container">
 	<center style="font-size:50px;">Home</center>
 	<a href="#movieList">MovieList</a><br />
 	<a href="#create">Create Movie</a>
 	<div ng-view></div>
 </body>
+
 </html>
