@@ -11,9 +11,11 @@ app.controller('Detail', ['$scope', '$http', '$routeParams', 'movieFactory', 'id
 			alert("값이 Null 또는 Empty 입니다.");
 			return history.go();
 		})
-		.error(function (status) {
+		.error(function (stat, status) {
 			alert("불러오기 실패\nerror code: " + status);
 		})
+
+	$scope.imageShow = true;
 
 	$scope.close = function (result) {
 		close(result, 500);

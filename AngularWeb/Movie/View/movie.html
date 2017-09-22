@@ -6,12 +6,14 @@
 </head>
 <body>
 	<div>
-		Genre:
-		<select id="genreList">
-			<option></option>
-			<option ng-repeat="genre in genres">{{genre}}</option>
+		<select id="genreList" >
+			<option value="">Genre</option>
+			<option ng-repeat="g in genreList">{{g}}</option>
 		</select>
-		<button id="searchButton" ng-click="search()">Search</button>
+		<button ng-click="genreSearch()">Search</button>
+		<input type="text" id="firstPrice" style="height:22px; width:100px" placeholder="firstPrice"/> ~ 
+		<input type="text" id="endPrice" style="height:22px; width:100px" placeholder="endPrice"/>
+		<button ng-click="priceSearch()">Search</button>
 		<table datatable="ng" dt-options="dtOptions">
 			<thead>
 				<tr>
@@ -41,6 +43,7 @@
 			</tbody>
 		</table>
 	</div>
+	
 
 	
 </body>

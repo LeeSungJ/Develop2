@@ -2,6 +2,11 @@
 
 app.controller('Create', ['$scope', '$http', 'movieFactory', function ($scope, $http, movieFactory) {
 
+	movieFactory.getGenreList()
+		.success(function (data) {
+			$scope.genreList = data;
+		})
+
 	$scope.postRequest = function (moviesData) {
 		var Data = {
 			'Title': $scope.movie.Title,
@@ -21,7 +26,7 @@ app.controller('Create', ['$scope', '$http', 'movieFactory', function ($scope, $
 				.success(function () {
 					alert("추가되었습니다.")
 				})
-				.error(function (status) {
+				.error(function (stat, status) {
 					alert("실패했습니다.\n조건을 잘 확인해 주시기 바랍니다.\nerror code: " + status)
 				})
 		}

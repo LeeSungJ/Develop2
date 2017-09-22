@@ -9,7 +9,7 @@
 	<div id="checkTitle"></div>
 	ReleaseDate: <input type="text" onkeyup="dateKeyup()" ng-model="movie.ReleaseDate" id="releaseDate" /><br />
 	<div id="checkReleaseDate"></div>
-	Genre: <input type="text" onkeyup="genreKeyup()" ng-model="movie.Genre" id="genre" /><br />
+	Genre: <select ng-model="movie.Genre" ng-options="g for g in genreList"></select>
 	<div id="checkGenre"></div>
 	Price: <input type="text" onkeyup="priceKeyup()" ng-model="movie.Price" id="price" /><br />
 	<div id="checkPrice"></div>

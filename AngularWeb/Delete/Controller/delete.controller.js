@@ -12,7 +12,7 @@ app.controller('Delete', ['$scope', '$http', '$routeParams', 'movieFactory', 'id
 			alert("값이 Null 또는 Empty 입니다.");
 			return history.go();
 		})
-		.error(function (status) {
+		.error(function (stat, status) {
 			alert("error code: " + status);
 		})
 
@@ -21,7 +21,7 @@ app.controller('Delete', ['$scope', '$http', '$routeParams', 'movieFactory', 'id
 			.success(function () {
 				alert("삭제되었습니다.")
 			})
-			.error(function (status) {
+			.error(function (stat, status) {
 				alert("삭제에 실패했습니다.\nerror code: " + status)
 			})
 	};

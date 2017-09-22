@@ -6,6 +6,7 @@ app.controller('Edit', ['$scope', '$http', '$routeParams', 'movieFactory', 'id',
 			if (data !== null && data !== "") {
 				$scope.movie = data;
 				$scope.movie.ReleaseDate = moment($scope.movie.ReleaseDate).format("YYYY-MM-DD");
+				$scope.ID = id;
 				return;
 			}
 			alert("값이 Null 또는 Empty 입니다.");
@@ -13,6 +14,11 @@ app.controller('Edit', ['$scope', '$http', '$routeParams', 'movieFactory', 'id',
 		})
 		.error(function () {
 			alert("불러오기 실패");
+		})
+
+	movieFactory.getGenreList()
+		.success(function (data) {
+			$scope.genreList = data;
 		})
 
 	$scope.edit = function () {
@@ -35,7 +41,7 @@ app.controller('Edit', ['$scope', '$http', '$routeParams', 'movieFactory', 'id',
 				.success(function () {
 					alert("수정에 성공했습니다.")
 				})
-				.error(function (status) {
+				.error(function (stat, status) {
 					alert("실패했습니다.\n조건을 잘 확인해 주시기 바랍니다.\nerror code: " + status)
 				})
 		}

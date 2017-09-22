@@ -36,6 +36,8 @@
 					<div>
 						Review : {{movies.Review}}
 					</div>
+					<button ng-click="imageShow =! imageShow">클릭</button>
+					<img ng-show="imageShow" src="../../image/{{movies.Title}}.jpg" />
 				</div>
 			</div>
 		</div>

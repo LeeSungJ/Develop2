@@ -12,22 +12,32 @@ app.controller('Movie', ['$scope', '$http', 'movieFactory', 'DTOptionsBuilder', 
 		.error(function (status) {
 			alert("로딩 실패\nerror code: " + status);
 		})
-	movieFactory.getGenres()
+
+	movieFactory.getGenreList()
 		.success(function (data) {
-			$scope.genres = data;
-		})
-		.error(function (status) {
-			alert("로딩 실패\nerror code: " + status);
+			$scope.genreList = data;
 		})
 
-	$scope.search = function () {
+	$scope.genreSearch = function () {
 		var genre = $('#genreList').val();
 		var searchTitle = "";
 		movieFactory.searchMovie(genre, searchTitle)
 			.success(function (data) {
 				$scope.movies = data;
 			})
-	}	
+	}
+	
+	$scope.priceSearch = function () {
+		var firstPrice = $('#firstPrice').val();
+		var endPrice = $('#endPrice').val();
+		movieFactory.searchPrice(firstPrice, endPrice)
+			.success(function (data) {
+				$scope.movies = data;
+			})
+			.error(function (stat, status) {
+				alert("error code:" + status);
+			})
+	}
 
 	$scope.edit = function () {
 		ModalService.showModal({

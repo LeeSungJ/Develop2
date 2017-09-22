@@ -10,32 +10,38 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" ng-click="close(false)" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title">Edit</h4>
+					<h4 class="modal-title">{{ID}}번 Edit</h4>
 				</div>
 				<div class="modal-body">
 					<div>
-						Title : <input type="text" id="title" onkeyup="titleKeyup()" ng-model="movie.Title" /><div id="checkTitle"></div>
+						Title : <input type="text" id="title" onkeyup="titleKeyup()" ng-model="movie.Title"/>
+						<div id="checkTitle" ></div>
 					</div>
 
 					<div>
-						ReleaseDate : <input type="text" id="releaseDate" onkeyup="dateKeyup()" ng-model="movie.ReleaseDate" /><div id="checkReleaseDate"></div>
+						ReleaseDate : <input type="text" id="releaseDate" onkeyup="dateKeyup()" ng-model="movie.ReleaseDate" />
+						<div id="checkReleaseDate"></div>
 					</div>
 
 					<div>
-						Genre : <input type="text" id="genre" onkeyup="genreKeyup()" ng-model="movie.Genre" /><div id="checkGenre"></div>
+						Genre : <select ng-model="movie.Genre" ng-options="g for g in genreList"></select>
 					</div>
 
 					<div>
-						Price : <input type="text" id="price" onkeyup="priceKeyup()" ng-model="movie.Price" /><div id="checkPrice"></div>
+						Price : <input type="text" id="price" onkeyup="priceKeyup()" ng-model="movie.Price" />
+						<div id="checkPrice"></div>
 					</div>
 
 					<div>
-						Rating : <input type="text" id="rating" onkeyup="ratingKeyup()" ng-model="movie.Rating" /><div id="checkRating"></div>
+						Rating : <input type="text" id="rating" onkeyup="ratingKeyup()" ng-model="movie.Rating" />
+						<div id="checkRating"></div>
 					</div>
 
 					<div>
-						Review : <input type="text" id="review" onkeyup="reviewKeyup()" ng-model="movie.Review" /><div id="checkReview"></div>
+						Review : <input type="text" id="review" onkeyup="reviewKeyup()" ng-model="movie.Review" />
+						<div id="checkReview"></div>
 					</div>
+
 					<button ng-click="edit()">Edit</button>
 				</div>
 			</div>

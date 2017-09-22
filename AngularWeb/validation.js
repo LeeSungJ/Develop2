@@ -17,22 +17,22 @@ function jsonToUrlString(json) {
 function validation(data) {
 
 	if (titleCheck(data.Title) === false || dateCheck(data.ReleaseDate) === false || genreCheck(data.Genre) === false || priceCheck(data.Price) === false || ratingCheck(data.Rating) === false || reviewCheck(data.Review) === false) {
-		if (titleCheck(title) === false) {
+		if (titleCheck(data.Title) === false) {
 			$('#checkTitle').html(" 첫 문자는 대문자, 글자 수 유의.(ex.Title, 3~60자)<br/>");
 		}
-		if (dateCheck(date) === false) {
+		if (dateCheck(data.ReleaseDate) === false) {
 			$('#checkReleaseDate').html(" 날짜를 올바르게 입력해 주세요(ex. 2011- 11 - 11) <br/>");
 		}
-		if (genreCheck(genre) === false) {
+		if (genreCheck(data.Genre) === false) {
 			$('#checkGenre').html(" 첫 문자는 대문자, 글자 수 유의.(ex.Action, 3~30자)<br/>");
 		}
-		if (priceCheck(price) === false) {
+		if (priceCheck(data.Price) === false) {
 			$('#checkPrice').html(" 숫자만 입력 가능.(99까지 가능)<br/>");
 		}
-		if (ratingCheck(rating) === false) {
+		if (ratingCheck(data.Rating) === false) {
 			$('#checkRating').html(" 첫 문자는 대문자, 글자 수 유의.(ex.Five, 3~5자)<br/>");
 		}
-		if (reviewCheck(review) === false) {
+		if (reviewCheck(data.Review) === false) {
 			$('#checkReview').html(" 첫 문자는 대문자, 글자 수 유의.(ex.Good, 3~5자)<br/>");
 		}
 		return false;

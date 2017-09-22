@@ -21,6 +21,7 @@ namespace MovieAPI.Controllers
         public ActionResult GetMovies(string movieGenre, string searchString)
         {
             var movies = dao.GetMovies(movieGenre, searchString);
+			
             return Json(movies, JsonRequestBehavior.AllowGet);
         }
 
@@ -32,7 +33,21 @@ namespace MovieAPI.Controllers
             return Json(genre, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpGet]
+		[HttpGet]
+		public ActionResult GetGenreList()
+		{
+			var genre = dao.GetGenresList();
+			return Json(genre, JsonRequestBehavior.AllowGet);
+		}
+
+		[HttpGet]
+		public ActionResult GetPriceMovies(int? firstPrice, int? endPrice)
+		{
+			var priceMovie = dao.GetPrices(firstPrice, endPrice);
+			return Json(priceMovie, JsonRequestBehavior.AllowGet);
+		}
+
+		[HttpGet]
         public ActionResult GetMovie(int id)
         {
             var movies = dao.GetMovie(id);

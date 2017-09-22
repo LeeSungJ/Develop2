@@ -32,5 +32,13 @@ app.factory('movieFactory', ['$http', function ($http) {
 		return $http.get(baseUrl + "GetMovies/?movieGenre=" + genre + "&&searchString=" + searchTitle);
 	}
 
+	movieFactory.getGenreList = function () {
+		return $http.get(baseUrl + "GetGenreList");
+	}
+
+	movieFactory.searchPrice = function (firstPrice, endPrice) {
+		return $http.get(baseUrl + "GetPriceMovies?firstPrice=" + firstPrice + "&&endPrice=" + endPrice);
+	}
+
 	return movieFactory;
 }])

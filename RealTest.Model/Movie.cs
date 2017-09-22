@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
+using System.ComponentModel;
 
 namespace RealTest.Model
 {
@@ -43,4 +44,13 @@ namespace RealTest.Model
 
         public DbSet<Movie> Movies { get; set; } //DB 테이블 생성 테이블명 'Movies'
     }
+
+	public enum genreEnum
+	{
+		Action = 0,
+		Comedy =1,
+		Thriler =2,	
+		Family =3,
+		ActionThriler =4
+	}
 }
