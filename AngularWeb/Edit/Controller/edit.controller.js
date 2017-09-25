@@ -18,7 +18,12 @@ app.controller('Edit', ['$scope', '$http', '$routeParams', 'movieFactory', 'id',
 
 	movieFactory.getGenreList()
 		.success(function (data) {
-			$scope.genreList = data;
+			if (data !== null && data !== "") {
+				$scope.genreList = data;
+				return;
+			}
+			alert("장르 목록 불러오기 실패")
+			return history.go();
 		})
 
 	$scope.edit = function () {
@@ -36,7 +41,6 @@ app.controller('Edit', ['$scope', '$http', '$routeParams', 'movieFactory', 'id',
 
 		if (result === true) {
 			moviesData = jsonToUrlString(Data);
-
 			movieFactory.editMovie(id, moviesData)
 				.success(function () {
 					alert("수정에 성공했습니다.")

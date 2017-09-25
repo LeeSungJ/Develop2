@@ -4,7 +4,12 @@ app.controller('Create', ['$scope', '$http', 'movieFactory', function ($scope, $
 
 	movieFactory.getGenreList()
 		.success(function (data) {
-			$scope.genreList = data;
+			if (data !== null && data !== "") {
+				$scope.genreList = data;
+				return;
+			}
+			alert("장르 목록을 불러오는데 실패했습니다.");
+			return history.go();
 		})
 
 	$scope.postRequest = function (moviesData) {
@@ -31,5 +36,5 @@ app.controller('Create', ['$scope', '$http', 'movieFactory', function ($scope, $
 				})
 		}
 	};
-	
+
 }]);

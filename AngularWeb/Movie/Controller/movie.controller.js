@@ -9,34 +9,48 @@ app.controller('Movie', ['$scope', '$http', 'movieFactory', 'DTOptionsBuilder', 
 		.success(function (data) {
 			$scope.movies = data;
 		})
-		.error(function (status) {
+		.error(function (stat, status) {
 			alert("로딩 실패\nerror code: " + status);
 		})
 
 	movieFactory.getGenreList()
 		.success(function (data) {
-			$scope.genreList = data;
+			if (data !== null && data !== "") {
+				$scope.genreList = data;
+			} else {
+				alert("장르 목록 로딩 실패.");
+				return history.go();
+			}
 		})
 
 	$scope.genreSearch = function () {
 		var genre = $('#genreList').val();
 		var searchTitle = "";
-		movieFactory.searchMovie(genre, searchTitle)
-			.success(function (data) {
-				$scope.movies = data;
-			})
+		if (genre !== null && genre !== "") {
+			movieFactory.searchMovie(genre, searchTitle)
+				.success(function (data) {
+					$scope.movies = data;
+				})
+				.error(function (stat, status) {
+					alert("error code: " + status);
+				})
+		}
 	}
-	
+
 	$scope.priceSearch = function () {
 		var firstPrice = $('#firstPrice').val();
 		var endPrice = $('#endPrice').val();
-		movieFactory.searchPrice(firstPrice, endPrice)
-			.success(function (data) {
-				$scope.movies = data;
-			})
-			.error(function (stat, status) {
-				alert("error code:" + status);
-			})
+		if (firstPrice && endPrice !== null && firstPrice && endPrice !== "") {
+			movieFactory.searchPrice(firstPrice, endPrice)
+				.success(function (data) {
+					$scope.movies = data;
+				})
+				.error(function (stat, status) {
+					alert("error code:" + status);
+				})
+		} else {
+			alert("firstPrice 와 endPrice를 정확히 입력해 주세요");
+		}
 	}
 
 	$scope.edit = function () {

@@ -74,7 +74,6 @@
     <Content Include="Edit\Controller\edit.controller.js" />
     <Content Include="Factory\movieFactory.js" />
     <Content Include="Home.html" />
-    <Content Include="image\baseball.jpg" />
     <Content Include="include.html" />
     <Content Include="JS\angular-datatables.min.js" />
     <Content Include="JS\angular-modal-service.js" />
