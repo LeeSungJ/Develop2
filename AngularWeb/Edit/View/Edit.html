@@ -13,6 +13,9 @@
 					<h4 class="modal-title">{{ID}}번 Edit</h4>
 				</div>
 				<div class="modal-body">
+
+
+
 					<div>
 						Title : <input type="text" id="title" onkeyup="titleKeyup()" ng-model="movie.Title" />
 						<div id="checkTitle"></div>
@@ -26,7 +29,6 @@
 					<div>
 						Genre : <select ng-model="movie.Genre" ng-options="g for g in genreList"></select>
 					</div>
-
 					<div>
 						Price : <input type="text" id="price" onkeyup="priceKeyup()" ng-model="movie.Price" />
 						<div id="checkPrice"></div>
@@ -43,6 +45,7 @@
 					</div>
 
 					<button ng-click="edit()">Edit</button>
+					<div id="errorField" style="text-align: right;display:none; color:red; border:1px red solid; width:auto; float:right; border-radius:10px">각 필드 조건을 다시 한번 확인해주시기 바랍니다.</div>
 				</div>
 			</div>
 		</div>

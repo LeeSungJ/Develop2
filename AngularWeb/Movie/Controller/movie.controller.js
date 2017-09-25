@@ -38,11 +38,15 @@ app.controller('Movie', ['$scope', '$http', 'movieFactory', 'DTOptionsBuilder', 
 	}
 
 	$scope.priceSearch = function () {
-		var firstPrice = $('#firstPrice').val();
+		var startPrice = $('#firstPrice').val();
 		var endPrice = $('#endPrice').val();
-		if (firstPrice && endPrice !== null && firstPrice && endPrice !== "") {
-			movieFactory.searchPrice(firstPrice, endPrice)
+		if (startPrice && endPrice !== null && startPrice && endPrice !== "") {
+			movieFactory.searchPrice(startPrice, endPrice)
 				.success(function (data) {
+					if (startPrice > endPrice) {
+						alert("startPrice가 endPrice보다 클 수 없습니다.");
+						return history.go();
+					}
 					$scope.movies = data;
 				})
 				.error(function (stat, status) {

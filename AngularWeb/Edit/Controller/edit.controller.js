@@ -21,9 +21,12 @@ app.controller('Edit', ['$scope', '$http', '$routeParams', 'movieFactory', 'id',
 			if (data !== null && data !== "") {
 				$scope.genreList = data;
 				return;
+			} else {
+				$scope.genreList = {'result' : '장르목록이 없습니다.'};
 			}
+		})
+		.error(function () {
 			alert("장르 목록 불러오기 실패")
-			return history.go();
 		})
 
 	$scope.edit = function () {
