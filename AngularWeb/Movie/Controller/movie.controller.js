@@ -7,10 +7,15 @@ app.controller('Movie', ['$scope', '$http', 'movieFactory', 'DTOptionsBuilder', 
 
 	movieFactory.getMovies()
 		.success(function (data) {
-			$scope.movies = data;
+			if (data !== null && data !== "") {
+				$scope.movies = data;
+			} else {
+				alert("데이터가 없습니다.")
+			}
+			
 		})
 		.error(function (stat, status) {
-			alert("로딩 실패\nerror code: " + status);
+			alert("로딩 실패\nerror code: " + status + "\nstat: \n");
 		})
 
 	movieFactory.getGenreList()
@@ -50,7 +55,7 @@ app.controller('Movie', ['$scope', '$http', 'movieFactory', 'DTOptionsBuilder', 
 					$scope.movies = data;
 				})
 				.error(function (stat, status) {
-					alert("error code:" + status);
+					alert("error code:" + status + "\n stat: \n" + stat);
 				})
 		} else {
 			alert("firstPrice 와 endPrice를 정확히 입력해 주세요");

@@ -1,6 +1,10 @@
 ﻿var app = angular.module('routeApp');
 
 app.controller('Edit', ['$scope', '$http', '$routeParams', 'movieFactory', 'id', 'close', function ($scope, $http, $routeParams, movieFactory, id, close) {
+	if (id === null) {
+		alert("ID가 Null 입니다.")
+		return history.go();
+	}
 	movieFactory.getMovie(id)
 		.success(function (data) {
 			if (data !== null && data !== "") {
@@ -14,6 +18,7 @@ app.controller('Edit', ['$scope', '$http', '$routeParams', 'movieFactory', 'id',
 		})
 		.error(function () {
 			alert("불러오기 실패");
+			return history.go();
 		})
 
 	movieFactory.getGenreList()

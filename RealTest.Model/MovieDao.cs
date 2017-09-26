@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
-using System.Text.RegularExpressions;
+using System.Net.Http;
 
 namespace RealTest.Model
 {
@@ -15,7 +15,7 @@ namespace RealTest.Model
 			using (var db = new MovieDBContext())
 			{
 				IQueryable<Movie> query = db.Movies.AsNoTracking();
-				
+
 				if (string.IsNullOrEmpty(movieGenre) == false)
 				{
 					query = query.Where(m => m.Genre == movieGenre);
@@ -37,7 +37,7 @@ namespace RealTest.Model
 				var movie = db.Movies.Find(id);
 				if (movie == null)
 				{
-					return false;
+					throw new HttpRequestException();
 				}
 				else
 				{
@@ -54,13 +54,13 @@ namespace RealTest.Model
 			{
 				if (movie == null)
 				{
-					return false;
+					throw new HttpRequestException();
 				}
 				else
 				{
 					if (check.validationCheck(movie) == false)
 					{
-						return false;
+						throw new HttpRequestException();
 					}
 					var edit = db.Entry(movie).State = EntityState.Modified;
 					var dbChange = db.SaveChanges();
@@ -75,13 +75,13 @@ namespace RealTest.Model
 			{
 				if (movie == null)
 				{
-					return false;
+					throw new HttpRequestException();
 				}
 				else
 				{
 					if (check.validationCheck(movie) == false)
 					{
-						return false;
+						throw new HttpRequestException();
 					}
 					var addMovie = db.Movies.Add(movie);
 					var dbChange = db.SaveChanges();
@@ -106,11 +106,15 @@ namespace RealTest.Model
 			}
 		}
 
-		public Movie GetMovie(int? id)
+		public Movie GetMovie(int id)
 		{
 			using (var db = new MovieDBContext())
 			{
 				var movie = db.Movies.Find(id);
+				if (movie == null)
+				{
+					throw new ArgumentNullException();
+				}
 				return movie;
 			}
 		}
@@ -125,16 +129,14 @@ namespace RealTest.Model
 		{
 			using (var db = new MovieDBContext())
 			{
-				IQueryable<Movie> query = db.Movies.AsNoTracking();
-				
 				if (firstPrice == null || endPrice == null)
 				{
-					query = null;
+					throw new HttpRequestException();
 				}
-				else
-				{
-					query = query.Where(m => m.Price >= firstPrice && m.Price <= endPrice);
-				}
+				IQueryable<Movie> query = db.Movies.AsNoTracking();
+
+				query = query.Where(m => m.Price >= firstPrice && m.Price <= endPrice);
+
 				return query.ToList();
 			}
 		}

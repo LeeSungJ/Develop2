@@ -1,7 +1,10 @@
 ﻿var app = angular.module('routeApp');
 
 app.controller('Delete', ['$scope', '$http', '$routeParams', 'movieFactory', 'id', 'close', function ($scope, $http, $routeParams, movieFactory, id, close) {
-
+	if (id === null) {
+		alert("ID를 받아오지 못했습니다.")
+		return history.go();
+	}
 	movieFactory.getMovie(id)
 		.success(function (data) {
 			if (data !== null && data !== "") {
@@ -13,7 +16,8 @@ app.controller('Delete', ['$scope', '$http', '$routeParams', 'movieFactory', 'id
 			return history.go();
 		})
 		.error(function (stat, status) {
-			alert("error code: " + status);
+			alert("error code: " + status + "\nstat:\n" + stat);
+			return history.go();
 		})
 
 	$scope.delete = function () {

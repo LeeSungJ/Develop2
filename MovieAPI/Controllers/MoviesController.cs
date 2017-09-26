@@ -66,7 +66,7 @@ namespace MovieAPI.Controllers
             }
             else
             {
-                return Json(null);
+				throw new ArgumentNullException();
             }
         }
 
@@ -74,7 +74,6 @@ namespace MovieAPI.Controllers
         public ActionResult Post(Movie movie)
         {
             var movies = dao.AddMovie(movie);
-
             if (movies == true)
             {
                 var result = dao.GetMovies("", "");

@@ -9,7 +9,7 @@ app.controller('Create', ['$scope', '$http', 'movieFactory', function ($scope, $
 				return;
 			}
 			alert("장르 목록을 불러오는데 실패했습니다.");
-			return history.go();
+			return history.back();
 		})
 
 	$scope.postRequest = function (moviesData) {
@@ -36,5 +36,4 @@ app.controller('Create', ['$scope', '$http', 'movieFactory', function ($scope, $
 				})
 		}
 	};
-
 }]);
