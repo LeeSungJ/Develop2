@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+</head>
+<body>
+	Title: <input type="text" onkeyup="titleCheck()" ng-model="movie.Title" id="title" /><br />
+	<div id="checkTitle"></div>
+	ReleaseDate: <input type="text" onkeyup="dateCheck()" ng-model="movie.ReleaseDate" id="releaseDate" /><br />
+	<div id="checkReleaseDate"></div>
+	Genre: 
+	<select ng-model="movie.Genre">
+		<option value="">Genre</option>
+		<option ng-repeat="g in genreList">{{g}}</option>
+	</select>
+	<div id="checkGenre"></div>
+	Price: <input type="text" onkeyup="priceCheck()" ng-model="movie.Price" id="price" /><br />
+	<div id="checkPrice"></div>
+	Rating: <input type="text" onkeyup="ratingCheck()" ng-model="movie.Rating" id="rating" /><br />
+	<div id="checkRating"></div>
+	Reivew: <input type="text" onkeyup="reviewCheck()" ng-model="movie.Review" id="review" /><br />
+	<div id="checkReview"></div>
+	<div id="errorField" style="text-align: right;display:none; color:red; border:1px red solid; width:320px; border-radius:10px">각 필드 조건을 다시 한번 확인해주시기 바랍니다.</div><br />
+	<button ng-click="postRequest()">Post</button>
+</body>
+</html>

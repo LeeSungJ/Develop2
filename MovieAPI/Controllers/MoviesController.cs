@@ -21,6 +21,7 @@ namespace MovieAPI.Controllers
         public ActionResult GetMovies(string movieGenre, string searchString)
         {
             var movies = dao.GetMovies(movieGenre, searchString);
+			
             return Json(movies, JsonRequestBehavior.AllowGet);
         }
 
@@ -32,14 +33,28 @@ namespace MovieAPI.Controllers
             return Json(genre, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpGet]
+		[HttpGet]
+		public ActionResult GetGenreList()
+		{
+			var genre = dao.GetGenresList();
+			return Json(genre, JsonRequestBehavior.AllowGet);
+		}
+
+		[HttpGet]
+		public ActionResult GetPriceMovies(int? firstPrice, int? endPrice)
+		{
+			var priceMovie = dao.GetPrices(firstPrice, endPrice);
+			return Json(priceMovie, JsonRequestBehavior.AllowGet);
+		}
+
+		[HttpGet]
         public ActionResult GetMovie(int id)
         {
             var movies = dao.GetMovie(id);
             return Json(movies, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpDelete]
+        [HttpGet]
         public ActionResult Delete(int id)
         {
             var movies = dao.DeleteMovie(id);
@@ -47,11 +62,11 @@ namespace MovieAPI.Controllers
             if (movies == true)
             {
                 var result = dao.GetMovies("", "");
-                return Json( result );
+                return Json( result, JsonRequestBehavior.AllowGet);
             }
             else
             {
-                return Json(null);
+				throw new ArgumentNullException();
             }
         }
 
@@ -59,7 +74,6 @@ namespace MovieAPI.Controllers
         public ActionResult Post(Movie movie)
         {
             var movies = dao.AddMovie(movie);
-
             if (movies == true)
             {
                 var result = dao.GetMovies("", "");

@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+</head>
+<body>
+	<div class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" ng-click="close(false)" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Delete</h4>
+				</div>
+				<div class="modal-body">
+					<div>
+						Title : {{movies.Title}}
+					</div>
+
+					<div>
+						ReleaseDate : {{movies.ReleaseDate}}
+					</div>
+
+					<div>
+						Genre : {{movies.Genre}}
+					</div>
+
+					<div>
+						Price : {{movies.Price}}
+					</div>
+
+					<div>
+						Rating : {{movies.Rating}}
+					</div>
+
+					<div>
+						Review : {{movies.Review}}
+					</div>
+
+					<button ng-click="delete()">Delete</button>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+	
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+</head>
+<body>
+	<div>
+		<select id="genreList" >
+			<option value="">Genre</option>
+			<option ng-repeat="g in genreList">{{g}}</option>
+		</select>
+		<button ng-click="genreSearch()">Search</button>
+		<input type="text" id="firstPrice" style="height:22px; width:100px" placeholder="firstPrice"/> ~ 
+		<input type="text" id="endPrice" style="height:22px; width:100px" placeholder="endPrice"/>
+		<button ng-click="priceSearch()">Search</button>
+		<table datatable="ng" dt-options="dtOptions">
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>ReleaseDate</th>
+					<th>Genre</th>
+					<th>Price</th>
+					<th>Rating</th>
+					<th>Review</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="m in movies">
+					<td>{{m.Title}}</td>
+					<td>{{m.ReleaseDate | myDate | date: 'yyyy-MM-dd' }} </td>
+					<td>{{m.Genre}}</td>
+					<td>{{m.Price | currency:"$":0}}</td>
+					<td>{{m.Rating}}</td>
+					<td>{{m.Review}}</td>
+					<td>
+						<button ng-click="edit()">Edit</button> |
+						<button ng-click="detail()">Detail</button> |
+						<button ng-click="delete()">Delete</button>						
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+
+	
+</body>
+</html>

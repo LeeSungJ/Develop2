@@ -108,6 +108,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="checkValidation.cs" />
     <Compile Include="Migrations\CreateMoviesTable.cs" />
     <Compile Include="Migrations\CreateMoviesTable.Designer.cs">
       <DependentUpon>CreateMoviesTable.cs</DependentUpon>
